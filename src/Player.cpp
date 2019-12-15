@@ -4,7 +4,7 @@
 Player::Player(){
     std::cout << "Creating Player..." << std::endl;
     turn = false;
-    numHand = 13;
+    numHand = 14;
     for(int i = 0; i < numHand; i++){
         hand.push_back(0);
         std::cout << hand[i] << " ";
@@ -28,14 +28,13 @@ std::vector<int> Player::getHand(){
     return hand;
 }
 
-
-
+// Takes a vector of 13 ints and sets it to hand
 void Player::setHand(std::vector<int> h){
     
 }
 
 void Player::setTurn(bool t){
-
+    this->turn = t; 
 }
 
 Player::~Player(){
