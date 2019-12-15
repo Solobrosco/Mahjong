@@ -1,16 +1,16 @@
 #include <Mahjong.h>
 
+// Random # generator
 std::mt19937 rng (std::random_device{}());
 std::uniform_int_distribution<> tile (0, 144 - 1);
 
 Mahjong::Mahjong(){
 	std::cout << "Setting up Mahjong game" << std::endl;
-    numTiles = 144;
-    for(int i = 0; i < numTiles; i++){
-        Tiles.push_back(i+1);
-        // std::cout << Tiles[i] << " " << std::endl;
-    }
-
+    // for(int i = 0; i < numTiles; i++){
+    //     Tiles.push_back(i+1);
+    //     // std::cout << Tiles[i] << " " << std::endl;
+    // }
+    tiles = new MahjongTiles(numTiles);
     East = new Player();
     North = new Player();
     West = new Player();
@@ -36,12 +36,12 @@ ucm::json Mahjong::getBoard(){
     std::cout << "Getting Mahjong game state" << std::endl;
     ucm::json result;
     int r = tile(rng);
-    result["tiles"].push_back(Tiles);
+    result["tiles"].push_back(tiles->getTiles());
     result["eastHand"].push_back(East->getHand());
     result["northHand"].push_back(North->getHand());
     result["westHand"].push_back(West->getHand());
     result["southHand"].push_back(South->getHand());
-    result["garbage"].push_back(Tiles[r]);
+    // result["garbage"].push_back(Tiles[r]);
     return result;
 }
 
@@ -50,5 +50,6 @@ Mahjong::~Mahjong(){
     delete South;
     delete West;
     delete North;
+    delete tiles;
     std::cout << "Destroying Mahjong" << std::endl;
 }
