@@ -2,27 +2,26 @@
 #define MAHJONG_H
 
 #include <random>
-// #include <boost/algorithm/algorithm.hpp>
 #include <vector>
 
 #include <BoardGame.h>
 #include <Player.h>
+#include <MahjongTiles.h>
 
 
 /*
 This is the first attempt to make a mahjong game thru C++
-The logic will follow the use of magic numbers
+These set of objects will creates the logic of the game
 
 **Tasks**
-set dynamic tile movement for players
 Create additional object for the tiles.
-
+set dynamic tile movement for players
 */
 
 class Mahjong : public BoardGame{
-    // The tileset of mahjong
-    std::vector<int> Tiles;
-    int numTiles;
+    // Tileset 
+    const int numTiles = 144;
+    MahjongTiles* tiles;
     // The Players
     Player* East;
     Player* South;
@@ -33,11 +32,12 @@ public:
     Mahjong();
     Mahjong(const Mahjong&);
 
-    // Game fucntions
+    // Board game fucntions
     void reset();
     void handle(int,int, MouseButton);
     ucm::json getBoard();
 
+    // Game fucntions
     int getTiles();
     bool checkPong();
     bool checkKong();
