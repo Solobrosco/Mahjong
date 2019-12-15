@@ -15,6 +15,7 @@ The logic will follow the use of magic numbers
 
 **Tasks**
 set dynamic tile movement for players
+Create additional object for the tiles.
 
 */
 
