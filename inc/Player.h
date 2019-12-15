@@ -7,14 +7,17 @@
 class Player{
     std::vector<int> hand;
     bool turn;
-    int numHand;
+    const int numHand = 14;
+    std::string player;
+    Player();   
 public:
-    Player();
+    Player(std::string);
     Player(const Player&);
 
     bool getTurn();
     std::vector<int> getHand();
-    void setHand(std::vector<int>);
+    const int getnumHand();
+    void setHand(int);
     void setTurn(bool);
 
     ~Player();

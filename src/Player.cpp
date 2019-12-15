@@ -1,22 +1,26 @@
 #include <Player.h>
 
-// Default Constructor
-Player::Player(){
-    std::cout << "Creating Player..." << std::endl;
-    turn = false;
-    numHand = 14;
-    for(int i = 0; i < numHand; i++){
-        hand.push_back(0);
-        std::cout << hand[i] << " ";
+Player::Player(std::string player){
+    std::cout << "Creating Player of the " << player << std::endl;
+    this->player = player;
+    if(player == "East"){
+        turn = true;
     }
+    else{
+        turn = false;
+    }
+    // for(int i = 0; i < numHand; i++){
+    //     hand.push_back(0);
+    //     // std::cout << hand[i] << " ";
+    // }
 }
 
 // Copy Constructor
-Player::Player(const Player& other){
-    this->hand = other.hand;
-    this->turn = other.turn;
-    this->numHand = other.numHand;
-}
+// Player::Player(const Player& other){
+//     this->hand = other.hand;
+//     this->turn = other.turn;
+//     this->numHand = other.numHand;
+// }
 
 //================================================================================================================================
 
@@ -28,9 +32,13 @@ std::vector<int> Player::getHand(){
     return hand;
 }
 
+const int Player::getnumHand(){
+    return numHand;
+}
+
 // Takes a vector of 13 ints and sets it to hand
-void Player::setHand(std::vector<int> h){
-    
+void Player::setHand(int h){
+    hand.push_back(h);
 }
 
 void Player::setTurn(bool t){
@@ -38,5 +46,5 @@ void Player::setTurn(bool t){
 }
 
 Player::~Player(){
-    std::cout << "Destroying Player..." << std::endl;
+    std::cout << "Destroyed Player of the " << player << std::endl;
 }
