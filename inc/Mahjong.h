@@ -13,7 +13,9 @@
 This is the first attempt to make a mahjong game thru C++
 The logic will follow the use of magic numbers
 
-Now set up the players hands. 
+**Tasks**
+set dynamic tile movement for players
+
 */
 
 class Mahjong : public BoardGame{
@@ -21,13 +23,16 @@ class Mahjong : public BoardGame{
     std::vector<int> Tiles;
     int numTiles;
     // The Players
-    // Player* East;
-    // Player* South;
-    // Player* West;
-    // Player* North;
+    Player* East;
+    Player* South;
+    Player* West;
+    Player* North;
 public:
+    // Constructors 
     Mahjong();
     Mahjong(const Mahjong&);
+
+    // Game fucntions
     void reset();
     void handle(int,int, MouseButton);
     ucm::json getBoard();
@@ -38,6 +43,7 @@ public:
     bool checkChow();
     bool checkwin();
 
+    // Destructors
     ~Mahjong();
 };
 

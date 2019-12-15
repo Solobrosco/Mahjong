@@ -10,13 +10,15 @@ Mahjong::Mahjong(){
         Tiles.push_back(i+1);
         // std::cout << Tiles[i] << " " << std::endl;
     }
-    // std::random_shuffle(std::begin(Tiles), std::end(Tiles));
 
-    // East = new Player();
-    // South = new Player();
-    // West = new Player();
-    // North = new Player();
+    East = new Player();
+    North = new Player();
+    West = new Player();
+    South = new Player();
 }
+
+
+//================================================================================================================================
 
 void Mahjong::reset(){
     // for(int i = 0; i < numTiles; i++){
@@ -35,14 +37,18 @@ ucm::json Mahjong::getBoard(){
     ucm::json result;
     int r = tile(rng);
     result["tiles"].push_back(Tiles);
+    result["eastHand"].push_back(East->getHand());
+    result["northHand"].push_back(North->getHand());
+    result["westHand"].push_back(West->getHand());
+    result["southHand"].push_back(South->getHand());
     result["garbage"].push_back(Tiles[r]);
     return result;
 }
 
 Mahjong::~Mahjong(){
-	std::cout << "Destroying Game" << std::endl;
-    // delete East;
-    // delete South;
-    // delete West;
-    // delete North;
+    delete East;
+    delete South;
+    delete West;
+    delete North;
+    std::cout << "Destroying Mahjong" << std::endl;
 }
