@@ -3,7 +3,6 @@
 
 #include <server.h>
 #include <vector>
-#include <Mahjong.h>
 
 class Player{
     std::vector<int> hand;
@@ -14,7 +13,7 @@ public:
     Player(const Player&);
 
     bool getTurn();
-    int getHand();
+    std::vector<int> getHand();
     void setHand(std::vector<int>);
     void setTurn(bool);
 
