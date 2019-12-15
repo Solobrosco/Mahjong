@@ -1,31 +1,37 @@
 #include <Mahjong.h>
 
-// Random # generator
-std::mt19937 rng (std::random_device{}());
-std::uniform_int_distribution<> tile (0, 144 - 1);
-
 Mahjong::Mahjong(){
-	std::cout << "Setting up Mahjong game" << std::endl;
+	std::cout << "Setting up a game of Mahjong..." << std::endl;
     // for(int i = 0; i < numTiles; i++){
     //     Tiles.push_back(i+1);
     //     // std::cout << Tiles[i] << " " << std::endl;
     // }
     tiles = new MahjongTiles(numTiles);
-    East = new Player();
-    North = new Player();
-    West = new Player();
-    South = new Player();
+    East = new Player("East");
+    North = new Player("North");
+    West = new Player("West");
+    South = new Player("South");
+
+    // Set up hands
+    shuffleTiles();
 }
 
 
 //================================================================================================================================
 
 void Mahjong::reset(){
-    // for(int i = 0; i < numTiles; i++){
-    //     Tiles.push_back(i+1);
-    //     std::cout << Tiles[i] << " ";
-    // }
-    // std::random_shuffle(std::begin(Tiles), std::end(Tiles));
+    std::cout << "Resetting Game..." << std::endl;
+    delete East;
+    delete South;
+    delete West;
+    delete North;
+    delete tiles;
+    tiles = new MahjongTiles(numTiles);
+    East = new Player("East");
+    North = new Player("North");
+    West = new Player("West");
+    South = new Player("South");
+    shuffleTiles();
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
@@ -35,14 +41,54 @@ void Mahjong::handle(int x,int y, MouseButton click){
 ucm::json Mahjong::getBoard(){
     std::cout << "Getting Mahjong game state" << std::endl;
     ucm::json result;
-    int r = tile(rng);
     result["tiles"].push_back(tiles->getTiles());
     result["eastHand"].push_back(East->getHand());
     result["northHand"].push_back(North->getHand());
     result["westHand"].push_back(West->getHand());
     result["southHand"].push_back(South->getHand());
-    // result["garbage"].push_back(Tiles[r]);
+    result["garbage"].push_back(tiles->getGarbage());
     return result;
+}
+
+void Mahjong::shuffleTiles(){
+    // Random # generator
+    std::mt19937 rng (std::random_device{}());
+    int r,h;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 14; j++){
+            // std::cout << tiles->getAmount() << std::endl;
+            if(i == 0){
+                std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+                r = tileSet(rng);
+                h = tiles->getTile(r);
+                tiles->rmTile(r);
+                East->setHand(h);
+            }else if(i == 1){
+                std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+                r = tileSet(rng);
+                h = tiles->getTile(r);
+                tiles->rmTile(r);
+                North->setHand(h);
+            }else if(i == 2){
+                std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+                r = tileSet(rng);
+                h = tiles->getTile(r);
+                tiles->rmTile(r);
+                West->setHand(h);
+            }else if(i == 3){
+                std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+                r = tileSet(rng);
+                h = tiles->getTile(r);
+                tiles->rmTile(r);
+                South->setHand(h);
+            }
+        }
+    }
+    std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+    r = tileSet(rng);
+    h = tiles->getTile(r);
+    tiles->rmTile(r);
+    tiles->setGarbage(h);
 }
 
 Mahjong::~Mahjong(){
@@ -51,5 +97,5 @@ Mahjong::~Mahjong(){
     delete West;
     delete North;
     delete tiles;
-    std::cout << "Destroying Mahjong" << std::endl;
+    std::cout << "Stopping Mahjong..." << std::endl;
 }

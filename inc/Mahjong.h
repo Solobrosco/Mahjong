@@ -38,11 +38,11 @@ public:
     ucm::json getBoard();
 
     // Game fucntions
-    int getTiles();
+    void shuffleTiles();
     bool checkPong();
     bool checkKong();
     bool checkChow();
-    bool checkwin();
+    bool checkWin();
 
     // Destructors
     ~Mahjong();
