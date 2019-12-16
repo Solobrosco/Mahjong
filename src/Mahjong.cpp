@@ -35,7 +35,19 @@ void Mahjong::reset(){
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
-
+    if(click == left && x >= 0 && x < 4){
+        if(x == 0){
+            std::cout << "EAST CLICKED" << std::endl; 
+        }else if(x == 1){
+            std::cout << "SOUTH CLICKED" << std::endl;
+        }else if(x == 2){
+            std::cout << "WEST CLICKED" << std::endl;
+        }else if(x = 3){
+            std::cout << "NORTH CLICKED" << std::endl;
+        }
+    }else if(click ==  left && x == -1){
+        std::cout << "TRASH CLICKED" << std::endl;
+    }
 }
 
 ucm::json Mahjong::getBoard(){
