@@ -24,8 +24,16 @@ Player::Player(std::string player){
 
 //================================================================================================================================
 
+void Player::throwTile(int x){
+    hand.erase(hand.begin() + x);
+}
+
 bool Player::getTurn(){
     return turn;
+}
+
+int Player::getHand(int x){
+    return hand[x];
 }
 
 std::vector<int> Player::getHand(){

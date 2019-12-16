@@ -14,6 +14,9 @@ public:
     Player(std::string);
     Player(const Player&);
 
+    void throwTile(int);
+    int getHand(int);
+
     bool getTurn();
     std::vector<int> getHand();
     const int getnumHand();
