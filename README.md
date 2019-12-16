@@ -1,13 +1,27 @@
 # Mahjong Repository
 
 This is a repository for the Chinese tile-based game played through a progressive web appliction.
-The backend is written in C++ 
+The backend is written in C++ with JavaScript and HTML supporting the frontend.
+
+## MAKEFILE
+# make
+Compiles the application.
+# make clean
+Removes all object files compiled.
+# make scratch
+Compiles the scratchpad.cpp file.
+# make test
+Compiles test cases.
+
+## Run
+server is located in /bin which runs the application locally on port 18080
+# ./bin/server -t templates/ -s static/
 
 ## How to play
 
 There are various styles of playing Mahjong.
-This style comes from the Philippines where I learned the basics of how to play. 
-The game is played with four people on a table with 144 mahjong tiles, that all players shuffle around at the start.
+This style comes from the Philippines where I learned a rudimentary way of how to play. 
+The game is played with four people on a table with 144 mahjong tiles, that all players shuffle around at the start of the game.
 Each player is responsible for building a section of a four sided wall (2x18) placed in the middle of the table.
 The player on the eastern side of the table rolls a pair of dice to find who draws their hand first.
 Once the player is chosen, counterclockwise, each player takes 8 tiles from the broken wall until 13 tiles are in the hand.
