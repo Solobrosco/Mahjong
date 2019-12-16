@@ -23,35 +23,35 @@ int main(int argc, char** argv){
 
     server.route("/handle", [&](const request& req, response& res){
 
-        // if (req.has_params({"x", "y", "btn"})){
+        if (req.has_params({"x", "y", "btn"})){
 
-        //     std::string xS = req.url_params.get("x");
-        //     std::string yS = req.url_params.get("y");
-        //     std::string btn = req.url_params.get("btn");
+            std::string xS = req.url_params.get("x");
+            std::string yS = req.url_params.get("y");
+            std::string btn = req.url_params.get("btn");
 
-        //     int x = stoi(xS);
-        //     int y = stoi(yS);
-        //     MouseButton button;
-        //     if (btn == "left"){
-        //         button = left;
-        //     }
-        //     else if (btn == "right"){
-        //         button = right;
-        //     }
-        //     else{
-        //         button = unknown;
-        //     }
+            int x = stoi(xS);
+            int y = stoi(yS);
+            MouseButton button;
+            if (btn == "left"){
+                button = left;
+            }
+            else if (btn == "right"){
+                button = right;
+            }
+            else{
+                button = unknown;
+            }
 
-        //     game->handle(x, y, button);
+            game->handle(x, y, button);
 
-        //     json board = game->getBoard();
+            ucm::json board = game->getBoard();
 
-        //     res.sendJSON(board);
-        // }
+            res.sendJSON(board);
+        }
 
-        // else{
-        //     res.sendError400();
-        // }
+        else{
+            res.sendError400();
+        }
     });
 
     server.run();
