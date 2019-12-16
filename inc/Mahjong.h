@@ -14,7 +14,6 @@ This is the first attempt to make a mahjong game thru C++
 These set of objects will creates the logic of the game
 
 **Tasks**
-Create additional object for the tiles.
 set dynamic tile movement for players
 */
 
