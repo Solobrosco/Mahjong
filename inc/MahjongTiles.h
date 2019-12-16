@@ -12,7 +12,7 @@ public:
     MahjongTiles(int);
     MahjongTiles(const MahjongTiles&);
 
-    void rmTile(int);
+    void rmTile(int);  
 
     void setGarbage(int);
 

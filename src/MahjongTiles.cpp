@@ -22,7 +22,6 @@ void MahjongTiles::rmTile(int x){
 }
 
 
-
 void MahjongTiles::setGarbage(int t){
     G.push_back(t);
 }
