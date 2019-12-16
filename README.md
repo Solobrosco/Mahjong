@@ -4,18 +4,18 @@ This is a repository for the Chinese tile-based game played through a progressiv
 The backend is written in C++ with JavaScript and HTML supporting the frontend.
 
 ## MAKEFILE
-# make
+### make
 Compiles the application.
-# make clean
+### make clean
 Removes all object files compiled.
-# make scratch
+### make scratch
 Compiles the scratchpad.cpp file.
-# make test
+### make test
 Compiles test cases.
 
-## Run
+## RUN
 server is located in /bin which runs the application locally on port 18080
-# ./bin/server -t templates/ -s static/
+#### ./bin/server -t templates/ -s static/
 
 ## How to play
 
