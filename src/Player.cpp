@@ -24,6 +24,10 @@ Player::Player(std::string player){
 
 //================================================================================================================================
 
+void Player::sortHand(){
+    sort(hand.begin(), hand.end());
+}
+
 void Player::throwTile(int x){
     hand.erase(hand.begin() + x);
 }
@@ -37,12 +41,14 @@ int Player::getHand(int x){
 }
 
 std::vector<int> Player::getHand(){
+    sortHand();
     return hand;
 }
 
 const int Player::getnumHand(){
     return numHand;
 }
+
 
 // Takes a vector of 13 ints and sets it to hand
 void Player::setHand(int h){
