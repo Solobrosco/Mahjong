@@ -43,13 +43,9 @@ void Mahjong::handle(int x,int y, MouseButton click){
         if(click == left && x >= 0 && x < 4){
             if(x == 0){
                 std::cout << "EAST CLICKED" << std::endl;
-                // new tile
                 tiles->rmTile(randNum);
-                // setting garbage with tile thrown
                 tiles->setGarbage(East->getHand(y));
-                // 
                 East->throwTile(y);
-                
                 East->setHand(randNum);
             }else if(x == 1){
                 std::cout << "SOUTH CLICKED" << std::endl;
