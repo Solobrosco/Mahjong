@@ -14,6 +14,7 @@ public:
     Player(std::string);
     Player(const Player&);
 
+    void sortHand();
     void throwTile(int);
     int getHand(int);
 
