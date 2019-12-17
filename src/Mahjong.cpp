@@ -49,13 +49,33 @@ void Mahjong::handle(int x,int y, MouseButton click){
             East->setHand(r);
         }else if(x == 1){
             std::cout << "SOUTH CLICKED" << std::endl;
+            // std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+            // r = tileSet(rng);
+            // h = tiles->getTile(r);
+            // tiles->rmTile(r);
+            // tiles->setGarbage(South->getHand(y));
+            // South->throwTile(y);
+            // South->setHand(r);
         }else if(x == 2){
             std::cout << "WEST CLICKED" << std::endl;
+            // std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+            // r = tileSet(rng);
+            // h = tiles->getTile(r);
+            // tiles->rmTile(r);
+            // tiles->setGarbage(West->getHand(y));
+            // West->throwTile(y);
+            // West->setHand(r);
         }else if(x = 3){
             std::cout << "NORTH CLICKED" << std::endl;
+            // std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+            // r = tileSet(rng);
+            // h = tiles->getTile(r);
+            // tiles->rmTile(r);
+            // tiles->setGarbage(West->getHand(y));
+            // North->throwTile(y);
+            // North->setHand(r);
         }
     }else if(click ==  left && x == -1){
-
         std::cout << "TRASH CLICKED" << std::endl;
     }
 }
