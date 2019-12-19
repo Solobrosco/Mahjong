@@ -27,10 +27,10 @@ class Majong{
                 var WID = "#W" + i.toString();
                 var SID = "#S" + i.toString();
             }
-            $(EID).html(this.eHand[r][i]);
-            $(NID).html(this.nHand[r][i]);
-            $(WID).html(this.wHand[r][i]);
-            $(SID).html(this.sHand[r][i]);
+            $(EID).html(this.displayTiles(this.eHand[r][i]));
+            $(NID).html(this.displayTiles(this.nHand[r][i]));
+            $(WID).html(this.displayTiles(this.wHand[r][i]));
+            $(SID).html(this.displayTiles(this.sHand[r][i]));
         }
     }
     getGarbage(){
