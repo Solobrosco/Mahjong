@@ -5,10 +5,11 @@
 #include <vector>
 
 class Player{
-    std::vector<int> hand;
     bool turn;
     const int numHand = 14;
     std::string player;
+    std::vector<int> hand;
+    std::vector<int> reveal;
     Player();   
 public:
     Player(std::string);
@@ -16,11 +17,14 @@ public:
 
     void sortHand();
     void throwTile(int);
+    
     int getHand(int);
-
-    bool getTurn();
-    std::vector<int> getHand();
     const int getnumHand();
+    bool getTurn();
+    std::vector<int> getReveal();
+    std::vector<int> getHand();
+
+    void setReveal(int);
     void setHand(int);
     void setTurn(bool);
 
