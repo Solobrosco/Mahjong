@@ -2,17 +2,12 @@
 
 Mahjong::Mahjong(){
 	std::cout << "Setting up a game of Mahjong..." << std::endl;
-    // for(int i = 0; i < numTiles; i++){
-    //     Tiles.push_back(i+1);
-    //     // std::cout << Tiles[i] << " " << std::endl;
-    // }
     tiles = new MahjongTiles(numTiles);
     East = new Player("East");
     North = new Player("North");
     West = new Player("West");
     South = new Player("South");
 
-    // Set up hands
     shuffleTiles();
 }
 
