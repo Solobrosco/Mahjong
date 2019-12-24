@@ -7,7 +7,7 @@ Mahjong::Mahjong(){
     North = new Player("North");
     West = new Player("West");
     South = new Player("South");
-
+    state = {"East's Turn","North's Turn","West's Turn","South's Turn","Mahjong!"};
     shuffleTiles();
 }
 
