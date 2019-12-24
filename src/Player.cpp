@@ -40,6 +40,10 @@ int Player::getHand(int x){
     return hand[x];
 }
 
+std::vector<int> Player::getReveal(){
+    return reveal;
+}
+
 std::vector<int> Player::getHand(){
     sortHand();
     return hand;
@@ -50,7 +54,12 @@ const int Player::getnumHand(){
 }
 
 
-// Takes a vector of 13 ints and sets it to hand
+
+void Player::setReveal(int h){
+    reveal.push_back(h);
+}
+
+
 void Player::setHand(int h){
     hand.push_back(h);
 }

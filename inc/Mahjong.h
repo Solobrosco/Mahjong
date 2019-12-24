@@ -14,13 +14,15 @@ This is the first attempt to make a mahjong game thru C++
 These set of objects will creates the logic of the game
 
 **Tasks**
-set dynamic tile movement for players
+reveal bonus tiles
+Setup turn set
 */
 
 class Mahjong : public BoardGame{
     // Tileset 
     const int numTiles = 144;
     MahjongTiles* tiles;
+    std::vector<std::string> state;
     // The Players
     Player* East;
     Player* South;
