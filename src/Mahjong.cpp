@@ -1,13 +1,13 @@
 #include <Mahjong.h>
 
 Mahjong::Mahjong(){
-	std::cout << "Setting up a game of Mahjong..." << std::endl;
+	// std::cout << "Setting up a game of Mahjong..." << std::endl;
     tiles = new MahjongTiles(numTiles);
     East = new Player("East");
     North = new Player("North");
     West = new Player("West");
     South = new Player("South");
-    state = {"East's Turn","North's Turn","West's Turn","South's Turn","Mahjong!"};
+    state = {"East's Turn","South's Turn","West's Turn","North's Turn","Mahjong!"};
     shuffleTiles();
 }
 
@@ -15,7 +15,7 @@ Mahjong::Mahjong(){
 //================================================================================================================================
 
 void Mahjong::reset(){
-    std::cout << "Resetting Game..." << std::endl;
+    // std::cout << "Resetting Game..." << std::endl;
     delete East;
     delete South;
     delete West;
@@ -30,46 +30,61 @@ void Mahjong::reset(){
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
-    if(tiles->getAmount() > 0){    
+    if(tiles->getAmount() > 0 && click == left){    
         std::mt19937 rng (std::random_device{}());
         std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
         int randNum = tileSet(rng);
         int h = tiles->getTile(randNum);
-        if(click == left && x >= 0 && x < 4){
-            if(x == 0){
-                std::cout << "EAST CLICKED" << std::endl;
-                tiles->rmTile(randNum);
-                tiles->setGarbage(East->getHand(y));
-                East->throwTile(y);
-                East->setHand(randNum);
-            }else if(x == 1){
-                std::cout << "SOUTH CLICKED" << std::endl;
-                tiles->rmTile(randNum);
-                tiles->setGarbage(South->getHand(y));
-                South->throwTile(y);
-                South->setHand(randNum);
-            }else if(x == 2){
-                std::cout << "WEST CLICKED" << std::endl;
-                tiles->rmTile(randNum);
-                tiles->setGarbage(West->getHand(y));
-                West->throwTile(y);
-                West->setHand(randNum);
-            }else if(x = 3){
-                std::cout << "NORTH CLICKED" << std::endl;
-                tiles->rmTile(randNum);
-                tiles->setGarbage(North->getHand(y));
-                North->throwTile(y);
-                North->setHand(randNum);
-            }
-        }else if(click ==  left && x == -1){
-            std::cout << "TRASH CLICKED" << std::endl;
+        if(East->getTurn() && x == 0){
+            std::cout << "EAST CLICKED" << std::endl;
+            tiles->rmTile(randNum);
+            tiles->setGarbage(East->getHand(y));
+            East->throwTile(y);
+            East->setHand(randNum);
+            East->setTurn(false);
+            South->setTurn(true);
+        }else if(South->getTurn() && x == 1){
+            std::cout << "SOUTH CLICKED" << std::endl;
+            tiles->rmTile(randNum);
+            tiles->setGarbage(South->getHand(y));
+            South->throwTile(y);
+            South->setHand(randNum);
+            South->setTurn(false);
+            West->setTurn(true);
+        }else if(West->getTurn() && x == 2){
+            std::cout << "WEST CLICKED" << std::endl;
+            tiles->rmTile(randNum);
+            tiles->setGarbage(West->getHand(y));
+            West->throwTile(y);
+            West->setHand(randNum);
+            West->setTurn(false);
+            North->setTurn(true);
+        }else if(North->getTurn() && x == 3){
+            std::cout << "NORTH CLICKED" << std::endl;
+            tiles->rmTile(randNum);
+            tiles->setGarbage(North->getHand(y));
+            North->throwTile(y);
+            North->setHand(randNum);
+            North->setTurn(false);
+            East->setTurn(true);
         }
+    }else if(click ==  left && x == -1){
+        std::cout << "TRASH CLICKED" << std::endl;
     }
 }
 
 ucm::json Mahjong::getBoard(){
-    std::cout << "Getting Mahjong game state" << std::endl;
+    // std::cout << "Getting Mahjong game state" << std::endl;
     ucm::json result;
+    if(East->getTurn()){
+        result["state"].push_back(state[0]);
+    }else if(South->getTurn()){
+        result["state"].push_back(state[1]);
+    }else if(West->getTurn()){
+        result["state"].push_back(state[2]);
+    }else if(North->getTurn()){
+        result["state"].push_back(state[3]);
+    }
     result["tiles"].push_back(tiles->getTiles());
     result["eastHand"].push_back(East->getHand());
     result["northHand"].push_back(North->getHand());
@@ -126,5 +141,5 @@ Mahjong::~Mahjong(){
     delete West;
     delete North;
     delete tiles;
-    std::cout << "Stopping Mahjong..." << std::endl;
+    // std::cout << "Stopping Mahjong..." << std::endl;
 }
