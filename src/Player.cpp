@@ -1,7 +1,7 @@
 #include <Player.h>
 
 Player::Player(std::string player){
-    std::cout << "Creating Player of the " << player << std::endl;
+    // std::cout << "Creating Player of the " << player << std::endl;
     this->player = player;
     if(player == "East"){
         turn = true;
@@ -69,5 +69,5 @@ void Player::setTurn(bool t){
 }
 
 Player::~Player(){
-    std::cout << "Destroyed Player of the " << player << std::endl;
+    // std::cout << "Destroyed Player of the " << player << std::endl;
 }

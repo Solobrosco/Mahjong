@@ -2,7 +2,7 @@
 
 MahjongTiles::MahjongTiles(const int numTiles){
     if(numTiles == 144){
-        std::cout << "Creating Tiles..." << std::endl;
+        // std::cout << "Creating Tiles..." << std::endl;
         for(int i = 0; i < numTiles; i++){
             T.push_back(i+1);
             // std::cout << T[i] << " " << std::endl;
@@ -46,5 +46,5 @@ int MahjongTiles::getAmount(){
 
 
 MahjongTiles::~MahjongTiles(){
-    std::cout << "Destroyed Tiles" << std::endl;
+    // std::cout << "Destroyed Tiles" << std::endl;
 }
