@@ -15,7 +15,6 @@ These set of objects will creates the logic of the game
 
 **Tasks**
 reveal bonus tiles
-Setup turn set
 */
 
 class Mahjong : public BoardGame{
