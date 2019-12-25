@@ -15,6 +15,9 @@ These set of objects will creates the logic of the game
 
 **Tasks**
 reveal bonus tiles
+add buttons to call chow, pong, or kong
+Set up chow, kong and pong
+Set up Mahjong
 */
 
 class Mahjong : public BoardGame{
