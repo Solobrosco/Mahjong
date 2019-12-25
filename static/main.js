@@ -5,6 +5,7 @@ class Majong{
         this.nHand = data["northHand"];
         this.wHand = data["westHand"];
         this.sHand = data["southHand"];
+        this.state = data["state"];
     }
     setBoard(data){
         this.garbage = data["garbage"];
@@ -12,21 +13,15 @@ class Majong{
         this.nHand = data["northHand"];
         this.wHand = data["westHand"];
         this.sHand = data["southHand"];
+        this.state = data["state"];
     }
     getHand(){
         var r = 0;
         for (var i = 0; i < 14; i++){
-            if(i < 10){
-                var EID = "#E0" + i.toString();
-                var NID = "#N0" + i.toString();
-                var WID = "#W0" + i.toString();
-                var SID = "#S0" + i.toString();
-            }else{
                 var EID = "#E" + i.toString();
                 var NID = "#N" + i.toString();
                 var WID = "#W" + i.toString();
                 var SID = "#S" + i.toString();
-            }
             $(EID).html(this.displayTiles(this.eHand[r][i]));
             $(NID).html(this.displayTiles(this.nHand[r][i]));
             $(WID).html(this.displayTiles(this.wHand[r][i]));
@@ -35,6 +30,9 @@ class Majong{
     }
     getGarbage(){
         return this.garbage;
+    }
+    getState(){
+        return this.state;
     }
     displayTiles(tileNum){
         var result = "";
@@ -131,6 +129,7 @@ $(document).ready(function(){
 	$.get("/init", {}, function(response){
         var data = JSON.parse(response);
         let game = new Majong(data);
+        $("#state").html(game.getState());
         $("#trash").html(game.displayTiles(game.getGarbage()));
         game.getHand();
 
@@ -146,17 +145,10 @@ $(document).ready(function(){
             });
         });
         for (var i = 0; i < 14; i++){
-            if(i < 10){
-                var EID = "#E0" + i.toString();
-                var NID = "#N0" + i.toString();
-                var WID = "#W0" + i.toString();
-                var SID = "#S0" + i.toString();
-            }else{
                 var EID = "#E" + i.toString();
                 var NID = "#N" + i.toString();
                 var WID = "#W" + i.toString();
                 var SID = "#S" + i.toString();
-            }
             $(EID).click({hand: i, player: j = 0},function(e){
                 var x = e.data.player;
                 var y = e.data.hand;
@@ -164,6 +156,7 @@ $(document).ready(function(){
                 $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
                     var data = JSON.parse(response);
                     game.setBoard(data);
+                    $("#state").html(game.getState());
                     $("#trash").html(game.displayTiles(game.getGarbage()));
                     game.getHand();   
                 });
@@ -175,6 +168,7 @@ $(document).ready(function(){
                 $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
                     var data = JSON.parse(response);
                     game.setBoard(data);
+                    $("#state").html(game.getState());
                     $("#trash").html(game.displayTiles(game.getGarbage()));
                     game.getHand();    
                 });
@@ -186,6 +180,7 @@ $(document).ready(function(){
                 $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
                     var data = JSON.parse(response);
                     game.setBoard(data);
+                    $("#state").html(game.getState());
                     $("#trash").html(game.displayTiles(game.getGarbage()));
                     game.getHand();     
                 });
@@ -197,6 +192,7 @@ $(document).ready(function(){
                 $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
                     var data = JSON.parse(response);
                     game.setBoard(data);
+                    $("#state").html(game.getState());
                     $("#trash").html(game.displayTiles(game.getGarbage()));
                     game.getHand();    
                 });
