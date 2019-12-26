@@ -47,7 +47,7 @@
 
 
     <main role="main">
-        <div class="container">
+        <div class="container-fluid">
             <h1 id="state">Game state</h1>
             <br>
             <h3>Trash</h3>
@@ -58,30 +58,43 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
             <br>
             <h4>East</h4>
             <div class="row">
-                <table>
-                    <tr>
-                        <td id="E0"></td>
-                        <td id="E1"></td>
-                        <td id="E2"></td>
-                        <td id="E3"></td>
-                        <td id="E4"></td>
-                        <td id="E5"></td>
-                        <td id="E6"></td>
-                        <td id="E7"></td>
-                        <td id="E8"></td>
-                        <td id="E9"></td>
-                        <td id="E10"></td>
-                        <td id="E11"></td>
-                        <td id="E12"></td>
-                        <td id="E13"></td>
-                    </tr>
-                </table>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-sm btn-block">Chow</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-sm btn-block">Kong</button>    
+                </div>
             </div>
-            <h6>revealed</h6>
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td id="E0"></td>
+                            <td id="E1"></td>
+                            <td id="E2"></td>
+                            <td id="E3"></td>
+                            <td id="E4"></td>
+                            <td id="E5"></td>
+                            <td id="E6"></td>
+                            <td id="E7"></td>
+                            <td id="E8"></td>
+                            <td id="E9"></td>
+                            <td id="E10"></td>
+                            <td id="E11"></td>
+                            <td id="E12"></td>
+                            <td id="E13"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- <h6>revealed</h6>
             <div class="row">
                 <table>
                     <tr>
@@ -101,81 +114,111 @@
                         <td id="ER13"></td>
                     </tr>
                 </table>
-            </div>
-        </div>
-
-        <div class="container">
+            </div> -->
             <br>
             <h4>South</h4>
             <div class="row">
-                <table>
-                    <tr>
-                        <td id="S0"></td>
-                        <td id="S1"></td>
-                        <td id="S2"></td>
-                        <td id="S3"></td>
-                        <td id="S4"></td>
-                        <td id="S5"></td>
-                        <td id="S6"></td>
-                        <td id="S7"></td>
-                        <td id="S8"></td>
-                        <td id="S9"></td>
-                        <td id="S10"></td>
-                        <td id="S11"></td>
-                        <td id="S12"></td>
-                        <td id="S13"></td>
-                    </tr>
-                </table>
+                <div class="col-sm-4">
+                    <button class="btn btn-primary btn-sm btn-block">Chow</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-sm btn-block">Kong</button>    
+                </div>
             </div>
-        </div>
-
-        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td id="S0"></td>
+                            <td id="S1"></td>
+                            <td id="S2"></td>
+                            <td id="S3"></td>
+                            <td id="S4"></td>
+                            <td id="S5"></td>
+                            <td id="S6"></td>
+                            <td id="S7"></td>
+                            <td id="S8"></td>
+                            <td id="S9"></td>
+                            <td id="S10"></td>
+                            <td id="S11"></td>
+                            <td id="S12"></td>
+                            <td id="S13"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <br>
             <h4>West</h4>
             <div class="row">
-                <table>
-                    <tr>
-                        <td id="W0"></td>
-                        <td id="W1"></td>
-                        <td id="W2"></td>
-                        <td id="W3"></td>
-                        <td id="W4"></td>
-                        <td id="W5"></td>
-                        <td id="W6"></td>
-                        <td id="W7"></td>
-                        <td id="W8"></td>
-                        <td id="W9"></td>
-                        <td id="W10"></td>
-                        <td id="W11"></td>
-                        <td id="W12"></td>
-                        <td id="W13"></td>
-                    </tr>
-                </table>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-sm btn-block">Chow</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-sm btn-block">Kong</button>    
+                </div>
             </div>
-        </div>
-
-        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td id="W0"></td>
+                            <td id="W1"></td>
+                            <td id="W2"></td>
+                            <td id="W3"></td>
+                            <td id="W4"></td>
+                            <td id="W5"></td>
+                            <td id="W6"></td>
+                            <td id="W7"></td>
+                            <td id="W8"></td>
+                            <td id="W9"></td>
+                            <td id="W10"></td>
+                            <td id="W11"></td>
+                            <td id="W12"></td>
+                            <td id="W13"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <br>
             <h4>North</h4>
             <div class="row">
-                <table>
-                    <tr>
-                        <td id="N0"></td>
-                        <td id="N1"></td>
-                        <td id="N2"></td>
-                        <td id="N3"></td>
-                        <td id="N4"></td>
-                        <td id="N5"></td>
-                        <td id="N6"></td>
-                        <td id="N7"></td>
-                        <td id="N8"></td>
-                        <td id="N9"></td>
-                        <td id="N10"></td>
-                        <td id="N11"></td>
-                        <td id="N12"></td>
-                        <td id="N13"></td>
-                    </tr>
-                </table>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-sm btn-block">Chow</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-sm btn-block">Kong</button>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td id="N0"></td>
+                            <td id="N1"></td>
+                            <td id="N2"></td>
+                            <td id="N3"></td>
+                            <td id="N4"></td>
+                            <td id="N5"></td>
+                            <td id="N6"></td>
+                            <td id="N7"></td>
+                            <td id="N8"></td>
+                            <td id="N9"></td>
+                            <td id="N10"></td>
+                            <td id="N11"></td>
+                            <td id="N12"></td>
+                            <td id="N13"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 
