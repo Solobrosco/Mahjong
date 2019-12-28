@@ -106,13 +106,8 @@ void Mahjong::shuffleTiles(){
                 std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
                 r = tileSet(rng);
                 h = tiles->getTile(r);
-                if(checkBonuses(h)){
-                    tiles->rmTile(r);
-                    East->setReveal(h);
-                }else{
-                    tiles->rmTile(r);
-                    East->setHand(h);
-                }
+                tiles->rmTile(r);
+                East->setHand(h);
             }else if(i == 1){
                 std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
                 r = tileSet(rng);
