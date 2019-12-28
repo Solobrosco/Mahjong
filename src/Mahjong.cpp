@@ -75,6 +75,7 @@ void Mahjong::handle(int x,int y, MouseButton click){
 
 ucm::json Mahjong::getBoard(){
     // std::cout << "Getting Mahjong game state" << std::endl;
+    std::vector<int> bend = {1,2,3,4,5};
     ucm::json result;
     if(East->getTurn()){
         result["state"].push_back(state[0]);
@@ -91,7 +92,10 @@ ucm::json Mahjong::getBoard(){
     result["westHand"].push_back(West->getHand());
     result["southHand"].push_back(South->getHand());
     result["garbage"].push_back(tiles->getGarbage());
-    result["eReveal"].push_back(East->getReveal());
+    result["eReveal"].push_back(bend);
+    result["sReveal"].push_back(South->getReveal());
+    result["wReveal"].push_back(West->getReveal());
+    result["nReveal"].push_back(North->getReveal());
     return result;
 }
 
