@@ -26,7 +26,7 @@ public:
 
     void setReveal(int);
     void setHand(int);
-    void setTurn(bool);
+    void setTurn();
 
     ~Player();
 };

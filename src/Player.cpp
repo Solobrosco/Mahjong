@@ -54,7 +54,6 @@ const int Player::getnumHand(){
 }
 
 
-
 void Player::setReveal(int h){
     reveal.push_back(h);
 }
@@ -64,8 +63,8 @@ void Player::setHand(int h){
     hand.push_back(h);
 }
 
-void Player::setTurn(bool t){
-    this->turn = t; 
+void Player::setTurn(){
+    this->turn = !this->turn;
 }
 
 Player::~Player(){
