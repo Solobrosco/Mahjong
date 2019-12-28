@@ -42,10 +42,11 @@ public:
 
     // Game fucntions
     void shuffleTiles();
+    bool checkBonuses(int);
     bool checkPong();
     bool checkKong();
     bool checkChow();
-    bool checkWin();
+    bool checkMahjong();
 
     // Destructors
     ~Mahjong();
