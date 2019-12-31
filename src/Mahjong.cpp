@@ -30,6 +30,11 @@ void Mahjong::reset(){
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
+    // Magic numbers for Handle
+    // x: {(0:0,trash)(1,east)(2,south)(3,west)(4,north)}
+    // y: {(0-13,hand)(14,Chow)(15,Pong)(16,Kong)
+    // Ex: (2,5,left) = left click on South hand position 6
+    // Ex: (3,14) = West calls Chow
     if(tiles->getAmount() > 0 && click == left){    
         std::mt19937 rng (std::random_device{}());
         std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
