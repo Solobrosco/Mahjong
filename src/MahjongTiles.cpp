@@ -17,14 +17,12 @@ MahjongTiles::MahjongTiles(const MahjongTiles& other){
 
 }
 
+
+
 void MahjongTiles::rmTile(int x){
     T.erase(T.begin() + x);
 }
 
-
-void MahjongTiles::setGarbage(int t){
-    G.push_back(t);
-}
 
 
 int MahjongTiles::getGarbage(){
@@ -41,6 +39,12 @@ int MahjongTiles::getTile(int p){
 
 int MahjongTiles::getAmount(){
     return T.size();
+}
+
+
+
+void MahjongTiles::setGarbage(int t){
+    G.push_back(t);
 }
 
 

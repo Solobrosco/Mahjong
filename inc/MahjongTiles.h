@@ -30,12 +30,12 @@ public:
 
     void rmTile(int);  
 
-    void setGarbage(int);
-
     int getGarbage();
     std::vector<int> getTiles();
     int getTile(int);
     int getAmount();
+
+    void setGarbage(int);
 
     ~MahjongTiles();
 };
