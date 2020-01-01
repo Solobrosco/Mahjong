@@ -28,14 +28,14 @@ public:
     MahjongTiles(int);
     MahjongTiles(const MahjongTiles&);
 
-    void rmTile(int);  
+    void rmTile(int); //
 
-    int getGarbage();
-    std::vector<int> getTiles();
-    int getTile(int);
-    int getAmount();
+    int getGarbage(); // 
+    std::vector<int> getTiles(); //
+    int getTile(int); //
+    int getAmount(); //
 
-    void setGarbage(int);
+    void setGarbage(int); //
 
     ~MahjongTiles();
 };

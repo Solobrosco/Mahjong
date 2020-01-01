@@ -75,6 +75,23 @@ Context(MahjongTilesTest){
 		MahjongTiles tiles = MahjongTiles(144);
 		Assert::That(tiles.getAmount(), Equals(144));
 	}
+	Spec(CanGetAndSetGarbage){
+		MahjongTiles tiles = MahjongTiles(144);
+		tiles.setGarbage(20);
+		Assert::That(tiles.getGarbage(), Equals(20));
+	}
+	Spec(CanRemoveTile){
+		MahjongTiles tiles = MahjongTiles(144);
+		std::vector<int> vect;
+		for(int i = 0; i < 144; i++){
+            if(i != 3 && i != 123){
+				vect.push_back(i+1);
+			}
+        }
+		tiles.rmTile(3);
+		tiles.rmTile(123 - 1);
+		Assert::That(tiles.getTiles(), Equals(vect));
+	}
 };
 
 int main() {
