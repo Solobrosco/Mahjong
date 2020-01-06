@@ -9,10 +9,6 @@ Player::Player(std::string player){
     else{
         turn = false;
     }
-    // for(int i = 0; i < numHand; i++){
-    //     hand.push_back(0);
-    //     // std::cout << hand[i] << " ";
-    // }
 }
 
 // Copy Constructor
@@ -32,12 +28,18 @@ void Player::throwTile(int x){
     hand.erase(hand.begin() + x);
 }
 
-bool Player::getTurn(){
-    return turn;
-}
+
 
 int Player::getHand(int x){
     return hand[x];
+}
+
+const int Player::getnumHand(){
+    return numHand;
+}
+
+bool Player::getTurn(){
+    return turn;
 }
 
 std::vector<int> Player::getReveal(){
@@ -49,15 +51,11 @@ std::vector<int> Player::getHand(){
     return hand;
 }
 
-const int Player::getnumHand(){
-    return numHand;
-}
 
 
 void Player::setReveal(int h){
     reveal.push_back(h);
 }
-
 
 void Player::setHand(int h){
     hand.push_back(h);
