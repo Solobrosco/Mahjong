@@ -2,221 +2,193 @@
 
 <html lang="en" style="padding-top: 80px;">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Mahjong</title>
+        <title>Mahjong</title>
 
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
 
-    <script src="jquery/jquery.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
-    <script src="main.js"></script>
-    
-    <style>
-        body{
-            background:-webkit-radial-gradient(circle,#00cc00,#006600);
-            color: white;
-        }
-        td{
-            border: 1px solid black;
-            width:100px;
-            height:100px;
-            text-align: center;
-            font-size: 15px;
-            background-color: #ffffe6;
-        }
-        body{
-            text-align: center;
-        }
-        table{
-            margin: auto;
-        }
-        img{
-            object-fit: contain;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .navbar{
-            background-color: #996633;
-        }
-    </style>
+        <script src="jquery/jquery.js"></script>
+        <script src="bootstrap/bootstrap.min.js"></script>
+        <script src="main.js"></script>
 
-</head>
+    </head>
 
-<body>
-    <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Mahjong</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav> -->
-    <!--bg-dark-->
+    <body>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="#">Mahjong</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav> -->
+        <!--bg-dark-->
 
-    <main role="main">
-        <div class="container-fluid">
-            <h1 id="state">Game state</h1>
-            <br>
-            <h3>Trash</h3>
-            <div class="row">
-                <table>
-                    <tr><td id="trash"></td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="container-fluid">
-            <br>
-            <h4>East</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    <button id="eChow" class="btn btn-primary btn-sm btn-block">Chow</button>
-                </div>
-                <div class="col-md-4">
-                    <button id="ePong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
-                </div>
-                <div class="col-md-4">
-                    <button id="eKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+        <main role="main">
+            <div class="container-fluid">
+                <h1 id="state">Game state</h1>
+                <br>
+                <h3>Trash</h3>
+                <div class="row">
                     <table>
-                        <tr>
-                            <td id="E0"></td>
-                            <td id="E1"></td>
-                            <td id="E2"></td>
-                            <td id="E3"></td>
-                            <td id="E4"></td>
-                            <td id="E5"></td>
-                            <td id="E6"></td>
-                            <td id="E7"></td>
-                            <td id="E8"></td>
-                            <td id="E9"></td>
-                            <td id="E10"></td>
-                            <td id="E11"></td>
-                            <td id="E12"></td>
-                            <td id="E13"></td>
-                        </tr>
+                        <tr><td id="trash"></td></tr>
                     </table>
                 </div>
             </div>
-            <h6>revealed</h6>
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="eReveal"></table>
-                </div>
-            </div>
-            <br>
-            <h4>South</h4>
-            <div class="row">
-                <div class="col-sm-4">
-                    <button id="sChow" class="btn btn-primary btn-sm btn-block">Chow</button>
-                </div>
-                <div class="col-md-4">
-                    <button id="sPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
-                </div>
-                <div class="col-md-4">
-                    <button id="sKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table>
-                        <tr>
-                            <td id="S0"></td>
-                            <td id="S1"></td>
-                            <td id="S2"></td>
-                            <td id="S3"></td>
-                            <td id="S4"></td>
-                            <td id="S5"></td>
-                            <td id="S6"></td>
-                            <td id="S7"></td>
-                            <td id="S8"></td>
-                            <td id="S9"></td>
-                            <td id="S10"></td>
-                            <td id="S11"></td>
-                            <td id="S12"></td>
-                            <td id="S13"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <h4>West</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    <button id="wChow" class="btn btn-primary btn-sm btn-block">Chow</button>
-                </div>
-                <div class="col-md-4">
-                    <button id="wPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
-                </div>
-                <div class="col-md-4">
-                    <button id="wKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table>
-                        <tr>
-                            <td id="W0"></td>
-                            <td id="W1"></td>
-                            <td id="W2"></td>
-                            <td id="W3"></td>
-                            <td id="W4"></td>
-                            <td id="W5"></td>
-                            <td id="W6"></td>
-                            <td id="W7"></td>
-                            <td id="W8"></td>
-                            <td id="W9"></td>
-                            <td id="W10"></td>
-                            <td id="W11"></td>
-                            <td id="W12"></td>
-                            <td id="W13"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <h4>North</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    <button id="nChow" class="btn btn-primary btn-sm btn-block">Chow</button>
-                </div>
-                <div class="col-md-4">
-                    <button id="nPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
-                </div>
-                <div class="col-md-4">
-                    <button id="nKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table>
-                        <tr>
-                            <td id="N0"></td>
-                            <td id="N1"></td>
-                            <td id="N2"></td>
-                            <td id="N3"></td>
-                            <td id="N4"></td>
-                            <td id="N5"></td>
-                            <td id="N6"></td>
-                            <td id="N7"></td>
-                            <td id="N8"></td>
-                            <td id="N9"></td>
-                            <td id="N10"></td>
-                            <td id="N11"></td>
-                            <td id="N12"></td>
-                            <td id="N13"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
 
-    </main>
+            <div class="container-fluid">
+                <br>
+                <h4>East</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="eChow" class="btn btn-primary btn-sm btn-block">Chow</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="ePong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                    </div>
+                    <div class="col-md-4">
+                        <button id="eKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <td id="E0"></td>
+                                <td id="E1"></td>
+                                <td id="E2"></td>
+                                <td id="E3"></td>
+                                <td id="E4"></td>
+                                <td id="E5"></td>
+                                <td id="E6"></td>
+                                <td id="E7"></td>
+                                <td id="E8"></td>
+                                <td id="E9"></td>
+                                <td id="E10"></td>
+                                <td id="E11"></td>
+                                <td id="E12"></td>
+                                <td id="E13"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <h6>revealed</h6>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="eReveal"></table>
+                    </div>
+                </div>
+                <br>
+                <h4>South</h4>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button id="sChow" class="btn btn-primary btn-sm btn-block">Chow</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="sPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                    </div>
+                    <div class="col-md-4">
+                        <button id="sKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <td id="S0"></td>
+                                <td id="S1"></td>
+                                <td id="S2"></td>
+                                <td id="S3"></td>
+                                <td id="S4"></td>
+                                <td id="S5"></td>
+                                <td id="S6"></td>
+                                <td id="S7"></td>
+                                <td id="S8"></td>
+                                <td id="S9"></td>
+                                <td id="S10"></td>
+                                <td id="S11"></td>
+                                <td id="S12"></td>
+                                <td id="S13"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <h4>West</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="wChow" class="btn btn-primary btn-sm btn-block">Chow</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="wPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                    </div>
+                    <div class="col-md-4">
+                        <button id="wKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <td id="W0"></td>
+                                <td id="W1"></td>
+                                <td id="W2"></td>
+                                <td id="W3"></td>
+                                <td id="W4"></td>
+                                <td id="W5"></td>
+                                <td id="W6"></td>
+                                <td id="W7"></td>
+                                <td id="W8"></td>
+                                <td id="W9"></td>
+                                <td id="W10"></td>
+                                <td id="W11"></td>
+                                <td id="W12"></td>
+                                <td id="W13"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <h4>North</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="nChow" class="btn btn-primary btn-sm btn-block">Chow</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="nPong" class="btn btn-warning btn-sm btn-block ">Pong</button>    
+                    </div>
+                    <div class="col-md-4">
+                        <button id="nKong" class="btn btn-danger btn-sm btn-block">Kong</button>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <td id="N0"></td>
+                                <td id="N1"></td>
+                                <td id="N2"></td>
+                                <td id="N3"></td>
+                                <td id="N4"></td>
+                                <td id="N5"></td>
+                                <td id="N6"></td>
+                                <td id="N7"></td>
+                                <td id="N8"></td>
+                                <td id="N9"></td>
+                                <td id="N10"></td>
+                                <td id="N11"></td>
+                                <td id="N12"></td>
+                                <td id="N13"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-</body>
+        </main>
+
+    </body>
 
 </html>
