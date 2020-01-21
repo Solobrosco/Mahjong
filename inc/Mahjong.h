@@ -21,19 +21,21 @@ Set up Mahjong
 */
 
 class Mahjong : public BoardGame{
-    // Tileset 
-    const int numTiles = 144;
-    MahjongTiles* tiles;
-    std::vector<std::string> state;
+    // key variables to start game
+    // const int numTiles = 144;
+    // const int players = 4;
     // The Players
     Player* East;
     Player* South;
     Player* West;
     Player* North;
+    // Tileset 
+    MahjongTiles* tiles;
+    std::vector<std::string> state;
 public:
-    // Constructors 
+    // Constructors
     Mahjong();
-    Mahjong(const Mahjong&);
+    // Mahjong(const Mahjong&);
 
     // Board game fucntions
     void reset();
@@ -42,6 +44,7 @@ public:
 
     // Game fucntions
     void shuffleTiles();
+    void dealHands();
     bool checkBonuses(int);
     bool checkPong();
     bool checkKong();
