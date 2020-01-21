@@ -6,24 +6,14 @@
 
 /*
 Tiles are numbered accordingly
-Bamboo
-    1-36
-Characters
-    37-72
-Dots
-    72-108
-Honors
-    109-124
-Dragons
-    125-136
-Bonus
-    137-144
+Bamboo      Characters      Dots        Honors          Dragons         Bonus
+    1-36        37-72         72-108        109-124         125-136         137-144
 */
 
 class MahjongTiles{
     MahjongTiles();
-    std::vector<int> T;
-    std::vector<int> G;
+    std::vector<int> mahjongTiles;
+    std::vector<int> thrownAway;
 public:
     MahjongTiles(int);
     MahjongTiles(const MahjongTiles&);
