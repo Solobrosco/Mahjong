@@ -23,7 +23,7 @@ This is a repository for the Chinese tile-based game played through a progressiv
 	$ cd make
 
 	```
-4. Run locally on PORT18080
+4. Run locally on PORT 18080
  	 ```sh
 
 	$ ./bin/server -t templates/ -s static/ 
@@ -68,11 +68,13 @@ The game is played with four people on a table with 144 mahjong tiles, that all 
 
 Each player is responsible for building a section of a four sided wall (2x18) placed in the middle of the table.
 
-The player on the eastern side of the table rolls a pair of dice to find who draws their hand first.
+One player rolls a pair of dice to find who's wall the game deals tiles from, counting counter clockwise.
 
-Once the player is chosen, counterclockwise, each player takes 8 tiles from the broken wall until 13 tiles are in the hand.
+Then the player rolls again, the tile number from right to left of their wall is then divided for the front and back of the tile set.
 
-Any Bonus tiles are taken out of the hand and shown up on the table, replacing it with a title taken from the opposite side of the wall.
+Then counterclockwise, each player takes 8 tiles from the front of the tile set until 16 tiles are in the hand.
+
+Any Bonus tiles are taken out of the hand and revealed on the table, replacing it with a title taken from the back of the tile set.
 
 Then the process of discarding a tile from your hand, replacing with a new tile from the wall repeats counterclockwise, with the goal of getting a Mahjong.
 

@@ -6,7 +6,7 @@
 
 class Player{
     bool turn;
-    const int numHand = 14;
+    const int numHand = 16;
     std::string player;
     std::vector<int> hand;
     std::vector<int> reveal;
@@ -15,18 +15,18 @@ public:
     Player(std::string);
     Player(const Player&);
 
-    void sortHand();
-    void throwTile(int);
+    void sortHand(); //
+    void throwTile(int); //
     
-    int getHand(int);
-    const int getnumHand();
-    bool getTurn();
-    std::vector<int> getReveal();
-    std::vector<int> getHand();
+    int getHand(int); //
+    const int getnumHand(); //
+    bool getTurn(); //
+    std::vector<int> getReveal(); //
+    std::vector<int> getHand(); //
 
-    void setReveal(int);
-    void setHand(int);
-    void setTurn(bool);
+    void setReveal(int); //
+    void setHand(int); //
+    void setTurn(); //
 
     ~Player();
 };
