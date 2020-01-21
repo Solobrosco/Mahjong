@@ -6,7 +6,7 @@
 
 class Player{
     bool turn;
-    const int numHand = 14;
+    const int numHand = 16;
     std::string player;
     std::vector<int> hand;
     std::vector<int> reveal;
