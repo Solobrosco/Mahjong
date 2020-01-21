@@ -2,15 +2,15 @@
 
 Mahjong::Mahjong(){
 	// std::cout << "Setting up a game of Mahjong..." << std::endl;
-    tiles = new MahjongTiles(numTiles);
     East = new Player("East");
-    North = new Player("North");
-    West = new Player("West");
     South = new Player("South");
+    West = new Player("West");
+    North = new Player("North");
+    tiles = new MahjongTiles(144);
     state = {"East's Turn","South's Turn","West's Turn","North's Turn","Mahjong!"};
     shuffleTiles();
+    dealHands();
 }
-
 
 //================================================================================================================================
 
@@ -22,11 +22,13 @@ void Mahjong::reset(){
     delete North;
     delete tiles;
     tiles = new MahjongTiles(numTiles);
+    state = {"East's Turn","South's Turn","West's Turn","North's Turn","Mahjong!"};
     East = new Player("East");
-    North = new Player("North");
-    West = new Player("West");
     South = new Player("South");
+    West = new Player("West");
+    North = new Player("North");
     shuffleTiles();
+    dealHands();
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
@@ -108,6 +110,15 @@ void Mahjong::shuffleTiles(){
     // Random # generator
     std::mt19937 rng (std::random_device{}());
     int r,h;
+    // each player should have 13 tiles with starting player with 14 to throw away 1
+    std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
+    r = tileSet(rng);
+    h = tiles->getTile(r);
+    tiles->rmTile(r);
+    tiles->setGarbage(h);
+}
+
+void Mahjong::dealHands(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 14; j++){
             // std::cout << tiles->getAmount() << std::endl;
@@ -138,12 +149,6 @@ void Mahjong::shuffleTiles(){
             }
         }
     }
-    // each player should have 13 tiles with starting player with 14 to throw away 1
-    std::uniform_int_distribution<> tileSet (0, tiles->getAmount() - 1);
-    r = tileSet(rng);
-    h = tiles->getTile(r);
-    tiles->rmTile(r);
-    tiles->setGarbage(h);
 }
 
 bool Mahjong::checkBonuses(int t){
@@ -156,10 +161,10 @@ bool Mahjong::checkBonuses(int t){
 }
 
 Mahjong::~Mahjong(){
+    delete tiles;
     delete East;
     delete South;
     delete West;
     delete North;
-    delete tiles;
     // std::cout << "Stopping Mahjong..." << std::endl;
 }
