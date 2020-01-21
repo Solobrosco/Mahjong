@@ -11,13 +11,6 @@ Player::Player(std::string player){
     }
 }
 
-// Copy Constructor
-// Player::Player(const Player& other){
-//     this->hand = other.hand;
-//     this->turn = other.turn;
-//     this->numHand = other.numHand;
-// }
-
 //================================================================================================================================
 
 void Player::sortHand(){
