@@ -38,8 +38,8 @@ int Player::getHand(int x){
     return hand[x];
 }
 
-const int Player::getnumHand(){
-    return numHand;
+int Player::getNumHand(){
+    return hand.size();
 }
 
 bool Player::getTurn(){

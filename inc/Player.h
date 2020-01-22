@@ -5,7 +5,7 @@
 #include <vector>
 
 class Player{
-    const int numHand = 16;
+    int numHand;
     bool turn;
     std::string player;
     std::vector<int> hand;
@@ -19,7 +19,7 @@ public:
     void throwTile(int); //
     
     int getHand(int); //
-    const int getnumHand(); //
+    int getNumHand(); //
     bool getTurn(); //
     std::vector<int> getReveal(); //
     std::vector<int> getHand(); //
