@@ -1,17 +1,29 @@
 #include <MahjongTiles.h>
 
-MahjongTiles::MahjongTiles(const int numTiles){
+MahjongTiles::MahjongTiles(int numTiles){
     if(numTiles == 144){
-        // std::cout << "Creating Tiles..." << std::endl;
-        for(int i = 0; i < numTiles; i++){
-            mahjongTiles.push_back(i+1);
-            // std::cout << T[i] << " " << std::endl;
-        }
+        std::cout << "Creating Tiles..." << std::endl;
+        this->numTiles = numTiles;
     }
     else{
         std::cout << "Not the right amount of Tiles" << std::endl;
     }
 }
+
+void MahjongTiles::resetTiles(){
+    mahjongTiles.clear();
+    thrownAway.clear();
+    for(int i = 0; i < numTiles; i++){
+        mahjongTiles.push_back(i+1);
+        // std::cout << T[i] << " " << std::endl;
+    }
+}
+
+void MahjongTiles::shuffleTiles(){
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(std::begin(mahjongTiles),std::end(mahjongTiles), std::default_random_engine(seed));
+}
+
 
 void MahjongTiles::rmTile(int x){
     mahjongTiles.erase(mahjongTiles.begin() + x);
@@ -29,7 +41,7 @@ int MahjongTiles::getTile(int p){
     return mahjongTiles[p];
 }
 
-int MahjongTiles::getAmount(){
+int MahjongTiles::getTileSetAmount(){
     return mahjongTiles.size();
 }
 
