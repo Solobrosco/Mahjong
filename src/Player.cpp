@@ -3,7 +3,7 @@
 Player::Player(std::string player){
     // std::cout << "Creating Player of the " << player << std::endl;
     this->player = player;
-    if(player == "East"){
+    if(this->player == "East"){
         turn = true;
     }
     else{
@@ -12,6 +12,17 @@ Player::Player(std::string player){
 }
 
 //================================================================================================================================
+
+void Player::resetPlayer(){
+    if(this->player == "East"){
+        turn = true;
+    }
+    else{
+        turn = false;
+    }
+    hand.clear();
+    reveal.clear();
+}
 
 void Player::sortHand(){
     sort(hand.begin(), hand.end());
