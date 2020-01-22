@@ -29,21 +29,21 @@ class Mahjong : public BoardGame{
     Player* South;
     Player* West;
     Player* North;
+    std::vector<Player*> playerSet;
     // Tileset 
     MahjongTiles* tiles;
     std::vector<std::string> state;
+
 public:
     // Constructors
     Mahjong();
-    // Mahjong(const Mahjong&);
 
-    // Board game fucntions
+    // Board game functions
     void reset();
     void handle(int,int, MouseButton);
     ucm::json getBoard();
 
-    // Game fucntions
-    void shuffleTiles();
+    // Game functions
     void dealHands();
     bool checkBonuses(int);
     bool checkPong();
