@@ -15,8 +15,8 @@ void MahjongTiles::resetTiles(){
     thrownAway.clear();
     for(int i = 0; i < numTiles; i++){
         mahjongTiles.push_back(i+1);
-        // std::cout << T[i] << " " << std::endl;
     }
+    thrownAway.push_back(-1);
 }
 
 void MahjongTiles::shuffleTiles(){
@@ -24,12 +24,7 @@ void MahjongTiles::shuffleTiles(){
     std::shuffle(std::begin(mahjongTiles),std::end(mahjongTiles), std::default_random_engine(seed));
 }
 
-
-void MahjongTiles::rmTile(int x){
-    mahjongTiles.erase(mahjongTiles.begin() + x);
-}
-
-int MahjongTiles::getGarbage(){
+int MahjongTiles::getThrown(){
     return thrownAway.back();
 }
 
@@ -37,8 +32,10 @@ std::vector<int> MahjongTiles::getTiles(){
     return mahjongTiles;
 }
 
-int MahjongTiles::getTile(int p){
-    return mahjongTiles[p];
+int MahjongTiles::getTileFront(){
+    int rtn = mahjongTiles[0];
+    mahjongTiles.erase(mahjongTiles.begin());
+    return rtn;
 }
 
 int MahjongTiles::getTileSetAmount(){

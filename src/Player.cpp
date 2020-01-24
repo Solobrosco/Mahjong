@@ -3,12 +3,6 @@
 Player::Player(std::string player){
     // std::cout << "Creating Player of the " << player << std::endl;
     this->player = player;
-    if(this->player == "East"){
-        turn = true;
-    }
-    else{
-        turn = false;
-    }
 }
 
 //================================================================================================================================

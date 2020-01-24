@@ -21,11 +21,10 @@ public:
 
     void resetTiles();
     void shuffleTiles();
-    void rmTile(int); //
 
-    int getGarbage(); // 
+    int getThrown(); // 
     std::vector<int> getTiles(); //
-    int getTile(int); //
+    int getTileFront(); //
     int getTileSetAmount(); //
 
     void setGarbage(int); //
