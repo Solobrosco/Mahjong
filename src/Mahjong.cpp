@@ -129,6 +129,7 @@ void Mahjong::dealHands(){
         //         playerSet[i]->setReveal(tiles->getTileBack()); 
         //     }
         // }
+        // test
     }
 }
 
