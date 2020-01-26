@@ -38,6 +38,12 @@ int MahjongTiles::getTileFront(){
     return rtn;
 }
 
+int MahjongTiles::getTileBack(){
+    int rtn = mahjongTiles.back();
+    mahjongTiles.erase(mahjongTiles.end());
+    return rtn;
+}
+
 int MahjongTiles::getTileSetAmount(){
     return mahjongTiles.size();
 }
