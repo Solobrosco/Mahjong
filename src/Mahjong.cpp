@@ -124,6 +124,11 @@ void Mahjong::dealHands(){
         if(playerSet[i]->getTurn()){
            playerSet[i]->setHand(tiles->getTileFront());
         }
+        // for(int j = 0; j < playerSet[i]->getNumHand(); j++){
+        //     if(checkBonuses(playerSet[i]->getHand(j))){
+        //         playerSet[i]->setReveal(tiles->getTileBack()); 
+        //     }
+        // }
     }
 }
 
