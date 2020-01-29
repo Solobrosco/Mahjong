@@ -24,7 +24,8 @@ public:
 
     int getThrown(); // 
     std::vector<int> getTiles(); //
-    int getTileFront(); //
+    int getTileFront();
+    int getTileBack();
     int getTileSetAmount(); //
 
     void setGarbage(int); //
