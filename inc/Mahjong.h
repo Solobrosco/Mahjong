@@ -14,34 +14,43 @@ This is the first attempt to make a mahjong game thru C++
 These set of objects will creates the logic of the game
 
 **Tasks**
-set dynamic tile movement for players
+reveal bonus tiles
+add buttons to call chow, pong, or kong
+Set up chow, kong and pong
+Set up Mahjong
 */
 
 class Mahjong : public BoardGame{
-    // Tileset 
-    const int numTiles = 144;
-    MahjongTiles* tiles;
+    // key variables to start game
+    // const int numTiles = 144;
+    // const int players = 4;
     // The Players
     Player* East;
     Player* South;
     Player* West;
     Player* North;
-public:
-    // Constructors 
-    Mahjong();
-    Mahjong(const Mahjong&);
+    std::vector<Player*> playerSet;
+    // Tileset 
+    MahjongTiles* tiles;
+    std::vector<std::string> state;
 
-    // Board game fucntions
+public:
+    // Constructors
+    Mahjong();
+
+    // Board game functions
     void reset();
     void handle(int,int, MouseButton);
     ucm::json getBoard();
 
-    // Game fucntions
-    void shuffleTiles();
+    // Game functions
+    void dealHands();
+    void revealBonusTiles();
+    bool checkBonuses(int);
     bool checkPong();
     bool checkKong();
     bool checkChow();
-    bool checkWin();
+    bool checkMahjong();
 
     // Destructors
     ~Mahjong();

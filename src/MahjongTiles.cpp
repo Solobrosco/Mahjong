@@ -1,50 +1,57 @@
 #include <MahjongTiles.h>
 
-MahjongTiles::MahjongTiles(const int numTiles){
+MahjongTiles::MahjongTiles(int numTiles){
     if(numTiles == 144){
         std::cout << "Creating Tiles..." << std::endl;
-        for(int i = 0; i < numTiles; i++){
-            T.push_back(i+1);
-            // std::cout << T[i] << " " << std::endl;
-        }
+        this->numTiles = numTiles;
     }
     else{
         std::cout << "Not the right amount of Tiles" << std::endl;
     }
 }
 
-MahjongTiles::MahjongTiles(const MahjongTiles& other){
-
+void MahjongTiles::resetTiles(){
+    mahjongTiles.clear();
+    thrownAway.clear();
+    for(int i = 0; i < numTiles; i++){
+        mahjongTiles.push_back(i+1);
+    }
+    thrownAway.push_back(-1);
 }
 
-void MahjongTiles::rmTile(int x){
-    T.erase(T.begin() + x);
+void MahjongTiles::shuffleTiles(){
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(std::begin(mahjongTiles),std::end(mahjongTiles), std::default_random_engine(seed));
 }
 
-
-void MahjongTiles::setGarbage(int t){
-    G.push_back(t);
-}
-
-
-int MahjongTiles::getGarbage(){
-    return G.back();
+int MahjongTiles::getThrown(){
+    return thrownAway.back();
 }
 
 std::vector<int> MahjongTiles::getTiles(){
-    return T;
+    return mahjongTiles;
 }
 
-int MahjongTiles::getTile(int p){
-    return T[p];
+int MahjongTiles::getTileFront(){
+    int rtn = mahjongTiles[0];
+    mahjongTiles.erase(mahjongTiles.begin());
+    return rtn;
 }
 
-int MahjongTiles::getAmount(){
-    return T.size();
+int MahjongTiles::getTileBack(){
+    int rtn = mahjongTiles.back();
+    mahjongTiles.pop_back();
+    return rtn;
 }
 
+int MahjongTiles::getTileSetAmount(){
+    return mahjongTiles.size();
+}
 
+void MahjongTiles::setGarbage(int newTile){
+    thrownAway.push_back(newTile);
+}
 
 MahjongTiles::~MahjongTiles(){
-    std::cout << "Destroyed Tiles" << std::endl;
+    // std::cout << "Destroyed Tiles" << std::endl;
 }

@@ -1,28 +1,23 @@
 #include <Player.h>
 
 Player::Player(std::string player){
-    std::cout << "Creating Player of the " << player << std::endl;
+    // std::cout << "Creating Player of the " << player << std::endl;
     this->player = player;
-    if(player == "East"){
+}
+
+//================================================================================================================================
+
+void Player::resetPlayer(){
+    // East will always start first in this version
+    if(this->player == "East"){
         turn = true;
     }
     else{
         turn = false;
     }
-    // for(int i = 0; i < numHand; i++){
-    //     hand.push_back(0);
-    //     // std::cout << hand[i] << " ";
-    // }
+    hand.clear();
+    reveal.clear();
 }
-
-// Copy Constructor
-// Player::Player(const Player& other){
-//     this->hand = other.hand;
-//     this->turn = other.turn;
-//     this->numHand = other.numHand;
-// }
-
-//================================================================================================================================
 
 void Player::sortHand(){
     sort(hand.begin(), hand.end());
@@ -32,12 +27,25 @@ void Player::throwTile(int x){
     hand.erase(hand.begin() + x);
 }
 
-bool Player::getTurn(){
-    return turn;
+
+std::string Player::getPlayer(){
+    return player;
 }
 
 int Player::getHand(int x){
     return hand[x];
+}
+
+int Player::getNumHand(){
+    return hand.size();
+}
+
+bool Player::getTurn(){
+    return turn;
+}
+
+std::vector<int> Player::getReveal(){
+    return reveal;
 }
 
 std::vector<int> Player::getHand(){
@@ -45,20 +53,20 @@ std::vector<int> Player::getHand(){
     return hand;
 }
 
-const int Player::getnumHand(){
-    return numHand;
+
+
+void Player::setReveal(int h){
+    reveal.push_back(h);
 }
 
-
-// Takes a vector of 13 ints and sets it to hand
 void Player::setHand(int h){
     hand.push_back(h);
 }
 
-void Player::setTurn(bool t){
-    this->turn = t; 
+void Player::setTurn(){
+    this->turn = !this->turn;
 }
 
 Player::~Player(){
-    std::cout << "Destroyed Player of the " << player << std::endl;
+    // std::cout << "Destroyed Player of the " << player << std::endl;
 }

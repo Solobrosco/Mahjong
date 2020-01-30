@@ -3,23 +3,32 @@
 
 #include <server.h>
 #include <vector>
+#include <random>
+
+/*
+Tiles are numbered accordingly
+Bamboo      Characters      Dots        Honors          Dragons         Bonus
+    1-36        37-72         72-108        109-124         125-136         137-144
+*/
 
 class MahjongTiles{
+    int numTiles;
+    std::vector<int> mahjongTiles;
+    std::vector<int> thrownAway;
     MahjongTiles();
-    std::vector<int> T;
-    std::vector<int> G;
 public:
     MahjongTiles(int);
-    MahjongTiles(const MahjongTiles&);
 
-    void rmTile(int);  
+    void resetTiles();
+    void shuffleTiles();
 
-    void setGarbage(int);
+    int getThrown(); // 
+    std::vector<int> getTiles(); //
+    int getTileFront();
+    int getTileBack();
+    int getTileSetAmount(); //
 
-    int getGarbage();
-    std::vector<int> getTiles();
-    int getTile(int);
-    int getAmount();
+    void setGarbage(int); //
 
     ~MahjongTiles();
 };
