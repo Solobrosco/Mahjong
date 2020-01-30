@@ -27,6 +27,9 @@ void Player::throwTile(int x){
 }
 
 
+std::string Player::getPlayer(){
+    return player;
+}
 
 int Player::getHand(int x){
     return hand[x];
