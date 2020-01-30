@@ -3,15 +3,21 @@
 Player::Player(std::string player){
     // std::cout << "Creating Player of the " << player << std::endl;
     this->player = player;
-    if(player == "East"){
+}
+
+//================================================================================================================================
+
+void Player::resetPlayer(){
+    // East will always start first in this version
+    if(this->player == "East"){
         turn = true;
     }
     else{
         turn = false;
     }
+    hand.clear();
+    reveal.clear();
 }
-
-//================================================================================================================================
 
 void Player::sortHand(){
     sort(hand.begin(), hand.end());
@@ -22,13 +28,16 @@ void Player::throwTile(int x){
 }
 
 
+std::string Player::getPlayer(){
+    return player;
+}
 
 int Player::getHand(int x){
     return hand[x];
 }
 
-const int Player::getnumHand(){
-    return numHand;
+int Player::getNumHand(){
+    return hand.size();
 }
 
 bool Player::getTurn(){

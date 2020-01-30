@@ -3,6 +3,7 @@
 
 #include <server.h>
 #include <vector>
+#include <random>
 
 /*
 Tiles are numbered accordingly
@@ -11,19 +12,21 @@ Bamboo      Characters      Dots        Honors          Dragons         Bonus
 */
 
 class MahjongTiles{
-    MahjongTiles();
+    int numTiles;
     std::vector<int> mahjongTiles;
     std::vector<int> thrownAway;
+    MahjongTiles();
 public:
     MahjongTiles(int);
-    MahjongTiles(const MahjongTiles&);
 
-    void rmTile(int); //
+    void resetTiles();
+    void shuffleTiles();
 
-    int getGarbage(); // 
+    int getThrown(); // 
     std::vector<int> getTiles(); //
-    int getTile(int); //
-    int getAmount(); //
+    int getTileFront();
+    int getTileBack();
+    int getTileSetAmount(); //
 
     void setGarbage(int); //
 

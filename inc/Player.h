@@ -5,21 +5,22 @@
 #include <vector>
 
 class Player{
+    int numHand;
     bool turn;
-    const int numHand = 16;
     std::string player;
     std::vector<int> hand;
     std::vector<int> reveal;
     Player();   
 public:
     Player(std::string);
-    Player(const Player&);
 
+    void resetPlayer();
     void sortHand(); //
     void throwTile(int); //
     
+    std::string getPlayer();
     int getHand(int); //
-    const int getnumHand(); //
+    int getNumHand(); //
     bool getTurn(); //
     std::vector<int> getReveal(); //
     std::vector<int> getHand(); //
