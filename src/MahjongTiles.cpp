@@ -40,7 +40,7 @@ int MahjongTiles::getTileFront(){
 
 int MahjongTiles::getTileBack(){
     int rtn = mahjongTiles.back();
-    mahjongTiles.erase(mahjongTiles.end());
+    mahjongTiles.pop_back();
     return rtn;
 }
 
