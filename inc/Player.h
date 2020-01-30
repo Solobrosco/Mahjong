@@ -18,6 +18,7 @@ public:
     void sortHand(); //
     void throwTile(int); //
     
+    std::string getPlayer();
     int getHand(int); //
     int getNumHand(); //
     bool getTurn(); //
