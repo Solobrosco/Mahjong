@@ -24,6 +24,7 @@ void Mahjong::reset(){
     North->resetPlayer();
     tiles->shuffleTiles();
     dealHands();
+    revealBonusTiles();
 }
 
 void Mahjong::handle(int x,int y, MouseButton click){
@@ -122,12 +123,27 @@ void Mahjong::dealHands(){
         if(playerSet[i]->getTurn()){
            playerSet[i]->setHand(tiles->getTileFront());
         }
-        // for(int j = 0; j < playerSet[i]->getNumHand(); j++){
-        //     if(checkBonuses(playerSet[i]->getHand(j))){
-        //         playerSet[i]->setReveal(tiles->getTileBack()); 
-        //     }
-        // }
-        // test
+    }
+}
+
+void Mahjong::revealBonusTiles(){
+    // std::cout << "Got Revealed" << std::endl;
+
+    for(int i = 0; i < playerSet.size(); i++){
+    std::cout << "Player : " << playerSet[i]->getPlayer() << "hand : " << playerSet[i]->getNumHand() << std::endl;
+        for(int j = 0; j < playerSet[i]->getNumHand(); j++){
+        std::cout << j << " : " << playerSet[i]->getHand(j) <<std::endl;
+            if(playerSet[i]->getHand(j) >= 137 && playerSet[i]->getHand(j) < 145){
+                std::cout << "Got Revealed" << std::endl;
+                playerSet[i]->setReveal(playerSet[i]->getHand(j));
+                std::cout << "Set Revealed" << std::endl;
+                playerSet[i]->throwTile(j);
+                std::cout << "Threw Tile" << std::endl;
+                playerSet[i]->setHand(tiles->getTileBack());
+                std::cout << "Got tile" << std::endl;
+                j -= 1;
+            }
+        }
     }
 }
 

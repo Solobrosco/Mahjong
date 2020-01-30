@@ -45,6 +45,7 @@ public:
 
     // Game functions
     void dealHands();
+    void revealBonusTiles();
     bool checkBonuses(int);
     bool checkPong();
     bool checkKong();
