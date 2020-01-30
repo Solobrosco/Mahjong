@@ -33,8 +33,6 @@ void Mahjong::handle(int x,int y, MouseButton click){
     // Ex: (2,5,left) = left click on South hand position 6
     // Ex: (3,14) = West calls Chow
     
-    
-    
     // if(tiles->getTileSetAmount() > 0 && click == left){    
     //     std::mt19937 rng (std::random_device{}());
     //     std::uniform_int_distribution<> tileSet (0, tiles->getTileSetAmount() - 1);
