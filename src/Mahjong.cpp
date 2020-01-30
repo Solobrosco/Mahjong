@@ -133,7 +133,7 @@ void Mahjong::revealBonusTiles(){
     std::cout << "Player : " << playerSet[i]->getPlayer() << "hand : " << playerSet[i]->getNumHand() << std::endl;
         for(int j = 0; j < playerSet[i]->getNumHand(); j++){
         std::cout << j << " : " << playerSet[i]->getHand(j) <<std::endl;
-            if(playerSet[i]->getHand(j) >= 137 && playerSet[i]->getHand(j) < 145){
+            if(checkBonuses(playerSet[i]->getHand(j))){
                 std::cout << "Got Revealed" << std::endl;
                 playerSet[i]->setReveal(playerSet[i]->getHand(j));
                 std::cout << "Set Revealed" << std::endl;
