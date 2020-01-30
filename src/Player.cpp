@@ -8,6 +8,7 @@ Player::Player(std::string player){
 //================================================================================================================================
 
 void Player::resetPlayer(){
+    // East will always start first in this version
     if(this->player == "East"){
         turn = true;
     }
