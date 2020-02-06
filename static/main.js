@@ -23,18 +23,35 @@ class Majong{
         this.wReveal = data["WestReveal"];
         this.nReveal = data["NorthReveal"];
     }
-    getHand(){
+    getSet(){
+        this.getEastSet();
+        this.getSouthSet();
+        this.getWestSet();
+        this.getNorthSet();
+    }
+    getEastSet(){
         var r = 0;
-        for (var i = 0; i < 14; i++){
-                var EID = "#E" + i.toString();
-                var NID = "#N" + i.toString();
-                var WID = "#W" + i.toString();
-                var SID = "#S" + i.toString();
+        for(var i = 0; i < this.eHand[r].length; i++){
+            var E = "E" + i.toString();
+            var EID = "#E" + i.toString();
+            $("#eastHand").append('<div class="tile" id='+ E +'></div>');
             $(EID).html(this.displayTiles(this.eHand[r][i]));
-            $(NID).html(this.displayTiles(this.nHand[r][i]));
-            $(WID).html(this.displayTiles(this.wHand[r][i]));
-            $(SID).html(this.displayTiles(this.sHand[r][i]));
         }
+        for(var i = 0; i < this.eReveal[r].length; i++){
+            var ER = "ER" + i.toString();
+            var ERID = "#ER" + i.toString();
+            $("#eastReveal").append('<div class="tile" id='+ ER +'></div>');
+            $(ERID).html(this.displayTiles(this.eReveal[r][i]));
+        }
+    }
+    getSouthSet(){
+        
+    }
+    getWestSet(){
+        
+    }
+    getNorthSet(){
+        
     }
     getThrown(){
         return this.thrown;
@@ -138,12 +155,12 @@ $(document).ready(function(){
         var data = JSON.parse(response);
         let game = new Majong(data);
         $("#state").html(game.getState());
-        if(game.getGarbage() != -1){
-            console.log("doesn't");
-            $("#trash").html(game.displayTiles(game.getThrown()));
+        if(game.getThrown() != -1){
+            $(".thrown").html('<div class="tile" id="thrown"></div>')
+            $("#thrown").html(game.displayTiles(game.getThrown()));
         }
 
-        game.getHand();
+        game.getSet();
 // 
         $("#trash").click({hand: i = 0, player: j = -1},function(e){
             var x = e.data.player;
