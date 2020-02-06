@@ -1,7 +1,7 @@
 class Majong{
     constructor(data){
         this.state = data["State"];
-        this.garbage = data["Thrown"];
+        this.thrown = data["Thrown"];
         this.eHand = data["EastHand"];
         this.sHand = data["SouthHand"];
         this.wHand = data["WestHand"];
@@ -13,11 +13,15 @@ class Majong{
     }
     setBoard(data){
         this.state = data["State"];
-        this.garbage = data["Thrown"];
+        this.thrown = data["Thrown"];
         this.eHand = data["EastHand"];
         this.sHand = data["SouthHand"];
         this.wHand = data["WestHand"];
         this.nHand = data["NorthHand"];
+        this.eReveal = data["EastReveal"];
+        this.sReveal = data["SouthReveal"];
+        this.wReveal = data["WestReveal"];
+        this.nReveal = data["NorthReveal"];
     }
     getHand(){
         var r = 0;
@@ -32,8 +36,8 @@ class Majong{
             $(SID).html(this.displayTiles(this.sHand[r][i]));
         }
     }
-    getGarbage(){
-        return this.garbage;
+    getThrown(){
+        return this.thrown;
     }
     getState(){
         return this.state;
@@ -134,7 +138,11 @@ $(document).ready(function(){
         var data = JSON.parse(response);
         let game = new Majong(data);
         $("#state").html(game.getState());
-        $("#trash").html(game.displayTiles(game.getGarbage()));
+        if(game.getGarbage() != -1){
+            console.log("doesn't");
+            $("#trash").html(game.displayTiles(game.getThrown()));
+        }
+
         game.getHand();
 // 
         $("#trash").click({hand: i = 0, player: j = -1},function(e){
