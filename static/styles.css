@@ -43,3 +43,7 @@ img{
     display: block;
     display: inline-block;
 }
+
+.col-md-4{
+    padding-bottom: 10px;
+}
