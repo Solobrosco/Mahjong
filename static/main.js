@@ -45,13 +45,49 @@ class Majong{
         }
     }
     getSouthSet(){
-        
+        var r = 0;
+        for(var i = 0; i < this.sHand[r].length; i++){
+            var S = "S" + i.toString();
+            var SID = "#S" + i.toString();
+            $("#southHand").append('<div class="tile" id='+ S +'></div>');
+            $(SID).html(this.displayTiles(this.sHand[r][i]));
+        }
+        for(var i = 0; i < this.sReveal[r].length; i++){
+            var SR = "SR" + i.toString();
+            var SRID = "#SR" + i.toString();
+            $("#southReveal").append('<div class="tile" id='+ SR +'></div>');
+            $(SRID).html(this.displayTiles(this.sReveal[r][i]));
+        }
     }
     getWestSet(){
-        
+        var r = 0;
+        for(var i = 0; i < this.wHand[r].length; i++){
+            var W = "W" + i.toString();
+            var WID = "#W" + i.toString();
+            $("#westHand").append('<div class="tile" id='+ W +'></div>');
+            $(WID).html(this.displayTiles(this.wHand[r][i]));
+        }
+        for(var i = 0; i < this.wReveal[r].length; i++){
+            var WR = "WR" + i.toString();
+            var WRID = "#WR" + i.toString();
+            $("#westReveal").append('<div class="tile" id='+ WR +'></div>');
+            $(WRID).html(this.displayTiles(this.wReveal[r][i]));
+        }
     }
     getNorthSet(){
-        
+        var r = 0;
+        for(var i = 0; i < this.nHand[r].length; i++){
+            var N = "N" + i.toString();
+            var NID = "#N" + i.toString();
+            $("#northHand").append('<div class="tile" id='+ N +'></div>');
+            $(NID).html(this.displayTiles(this.nHand[r][i]));
+        }
+        for(var i = 0; i < this.nReveal[r].length; i++){
+            var NR = "NR" + i.toString();
+            var NRID = "#NR" + i.toString();
+            $("#northReveal").append('<div class="tile" id='+ NR +'></div>');
+            $(NRID).html(this.displayTiles(this.nReveal[r][i]));
+        }
     }
     getThrown(){
         return this.thrown;
