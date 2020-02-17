@@ -23,11 +23,18 @@ class Majong{
         this.wReveal = data["WestReveal"];
         this.nReveal = data["NorthReveal"];
     }
-    getSet(){
+    getGameSet(){
+        this.getThrownSet();
         this.getEastSet();
         this.getSouthSet();
         this.getWestSet();
         this.getNorthSet();
+    }
+    getThrownSet(){
+        if(this.getThrown() != -1){
+            $(".thrown").html('<div class="tile" id="thrown"></div>')
+            $("#thrown").html(game.displayTiles(game.getThrown()));
+        }
     }
     getEastSet(){
         var r = 0;
@@ -190,78 +197,83 @@ $(document).ready(function(){
 	$.get("/init", {}, function(response){
         var data = JSON.parse(response);
         let game = new Majong(data);
-        $("#state").html(game.getState());
-        if(game.getThrown() != -1){
-            $(".thrown").html('<div class="tile" id="thrown"></div>')
-            $("#thrown").html(game.displayTiles(game.getThrown()));
-        }
-
-        game.getSet();
-// 
-        $("#trash").click({hand: i = 0, player: j = -1},function(e){
-            var x = e.data.player;
-            var y = e.data.hand;
-            console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-            $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                var data = JSON.parse(response);
-                game.setBoard(data);
-                $("#trash").html(game.getGarbage());
-                game.getHand();    
-            });
-        });
-        for (var i = 0; i < 14; i++){
-                var EID = "#E" + i.toString();
-                var NID = "#N" + i.toString();
-                var WID = "#W" + i.toString();
-                var SID = "#S" + i.toString();
-            $(EID).click({hand: i, player: j = 0},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();   
-                });
-            });
-            $(SID).click({hand: i, player: j = 1},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();    
-                });
-            });
-            $(WID).click({hand: i, player: j = 2},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();     
-                });
-            });
-            $(NID).click({hand: i, player: j = 3},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();    
-                });
-            });
-        }
+        $("#state").html(game.getState());    
+        game.getGameSet();
+    });
+    $("#eShang").click({player: i = 1, hand: j = -1},function(e){
+        console.log("EastShang");
+    });
+    $("#ePong").click({player: i = 1, hand: j = -2},function(e){
+        console.log("EastPong");
+    });
+    $("#eKong").click({player: i = 1, hand: j = -3},function(e){
+        console.log("EastKong");
     });
 });
+        // 
+            // $("#trash").click({hand: i = 0, player: j = -1},function(e){
+            //     var x = e.data.player;
+            //     var y = e.data.hand;
+            //     console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //     $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //         var data = JSON.parse(response);
+            //         game.setBoard(data);
+            //         $("#trash").html(game.getGarbage());
+            //         game.getHand();    
+            //     });
+            // });
+            // for (var i = 0; i < 14; i++){
+            //         var EID = "#E" + i.toString();
+            //         var NID = "#N" + i.toString();
+            //         var WID = "#W" + i.toString();
+            //         var SID = "#S" + i.toString();
+            //     $(EID).click({hand: i, player: j = 0},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();   
+            //         });
+            //     });
+            //     $(SID).click({hand: i, player: j = 1},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();    
+            //         });
+            //     });
+            //     $(WID).click({hand: i, player: j = 2},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();     
+            //         });
+            //     });
+            //     $(NID).click({hand: i, player: j = 3},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();    
+            //         });
+            //     });
+            // }
+        
