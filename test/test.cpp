@@ -87,6 +87,10 @@ Context(MahjongTilesTest){
 	// }
 };
 
+Context(MahjongBoardGame){
+=
+};
+
 int main() {
 	// Run all the tests defined above
 	return TestRunner::RunAllTests();
