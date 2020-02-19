@@ -24,9 +24,15 @@ img{
     max-height: 100%;
 }
 
+.stack{
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+}
+
 .tile {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 10px;
     background-color: #ffffe6;
     margin: auto;
@@ -42,4 +48,12 @@ img{
 .reveal {
     display: block;
     display: inline-block;
+}
+
+.col-md-4{
+    padding-bottom: 10px;
+}
+
+.hand{
+    margin: auto;
 }

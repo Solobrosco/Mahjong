@@ -1,35 +1,103 @@
 class Majong{
     constructor(data){
-        this.garbage = data["garbage"];
-        this.eHand = data["eastHand"];
-        this.nHand = data["northHand"];
-        this.wHand = data["westHand"];
-        this.sHand = data["southHand"];
-        this.state = data["state"];
+        this.state = data["State"];
+        this.thrown = data["Thrown"];
+        this.eHand = data["EastHand"];
+        this.sHand = data["SouthHand"];
+        this.wHand = data["WestHand"];
+        this.nHand = data["NorthHand"];
+        this.eReveal = data["EastReveal"];
+        this.sReveal = data["SouthReveal"];
+        this.wReveal = data["WestReveal"];
+        this.nReveal = data["NorthReveal"];
     }
     setBoard(data){
-        this.garbage = data["garbage"];
-        this.eHand = data["eastHand"];
-        this.nHand = data["northHand"];
-        this.wHand = data["westHand"];
-        this.sHand = data["southHand"];
-        this.state = data["state"];
+        this.state = data["State"];
+        this.thrown = data["Thrown"];
+        this.eHand = data["EastHand"];
+        this.sHand = data["SouthHand"];
+        this.wHand = data["WestHand"];
+        this.nHand = data["NorthHand"];
+        this.eReveal = data["EastReveal"];
+        this.sReveal = data["SouthReveal"];
+        this.wReveal = data["WestReveal"];
+        this.nReveal = data["NorthReveal"];
     }
-    getHand(){
-        var r = 0;
-        for (var i = 0; i < 14; i++){
-                var EID = "#E" + i.toString();
-                var NID = "#N" + i.toString();
-                var WID = "#W" + i.toString();
-                var SID = "#S" + i.toString();
-            $(EID).html(this.displayTiles(this.eHand[r][i]));
-            $(NID).html(this.displayTiles(this.nHand[r][i]));
-            $(WID).html(this.displayTiles(this.wHand[r][i]));
-            $(SID).html(this.displayTiles(this.sHand[r][i]));
+    getGameSet(){
+        this.getThrownSet();
+        this.getEastSet();
+        this.getSouthSet();
+        this.getWestSet();
+        this.getNorthSet();
+    }
+    getThrownSet(){
+        if(this.getThrown() != -1){
+            $(".thrown").html('<div class="tile" id="thrown"></div>')
+            $("#thrown").html(game.displayTiles(game.getThrown()));
         }
     }
-    getGarbage(){
-        return this.garbage;
+    getEastSet(){
+        var r = 0;
+        for(var i = 0; i < this.eHand[r].length; i++){
+            var E = "E" + i.toString();
+            var EID = "#E" + i.toString();
+            $("#eastHand").append('<div class="tile" id='+ E +'></div>');
+            $(EID).html(this.displayTiles(this.eHand[r][i]));
+        }
+        for(var i = 0; i < this.eReveal[r].length; i++){
+            var ER = "ER" + i.toString();
+            var ERID = "#ER" + i.toString();
+            $("#eastReveal").append('<div class="tile" id='+ ER +'></div>');
+            $(ERID).html(this.displayTiles(this.eReveal[r][i]));
+        }
+    }
+    getSouthSet(){
+        var r = 0;
+        for(var i = 0; i < this.sHand[r].length; i++){
+            var S = "S" + i.toString();
+            var SID = "#S" + i.toString();
+            $("#southHand").append('<div class="tile" id='+ S +'></div>');
+            $(SID).html(this.displayTiles(this.sHand[r][i]));
+        }
+        for(var i = 0; i < this.sReveal[r].length; i++){
+            var SR = "SR" + i.toString();
+            var SRID = "#SR" + i.toString();
+            $("#southReveal").append('<div class="tile" id='+ SR +'></div>');
+            $(SRID).html(this.displayTiles(this.sReveal[r][i]));
+        }
+    }
+    getWestSet(){
+        var r = 0;
+        for(var i = 0; i < this.wHand[r].length; i++){
+            var W = "W" + i.toString();
+            var WID = "#W" + i.toString();
+            $("#westHand").append('<div class="tile" id='+ W +'></div>');
+            $(WID).html(this.displayTiles(this.wHand[r][i]));
+        }
+        for(var i = 0; i < this.wReveal[r].length; i++){
+            var WR = "WR" + i.toString();
+            var WRID = "#WR" + i.toString();
+            $("#westReveal").append('<div class="tile" id='+ WR +'></div>');
+            $(WRID).html(this.displayTiles(this.wReveal[r][i]));
+        }
+    }
+    getNorthSet(){
+        var r = 0;
+        for(var i = 0; i < this.nHand[r].length; i++){
+            var N = "N" + i.toString();
+            var NID = "#N" + i.toString();
+            $("#northHand").append('<div class="tile" id='+ N +'></div>');
+            $(NID).html(this.displayTiles(this.nHand[r][i]));
+        }
+        for(var i = 0; i < this.nReveal[r].length; i++){
+            var NR = "NR" + i.toString();
+            var NRID = "#NR" + i.toString();
+            $("#northReveal").append('<div class="tile" id='+ NR +'></div>');
+            $(NRID).html(this.displayTiles(this.nReveal[r][i]));
+        }
+    }
+    getThrown(){
+        return this.thrown;
     }
     getState(){
         return this.state;
@@ -129,74 +197,83 @@ $(document).ready(function(){
 	$.get("/init", {}, function(response){
         var data = JSON.parse(response);
         let game = new Majong(data);
-        $("#state").html(game.getState());
-        $("#trash").html(game.displayTiles(game.getGarbage()));
-        game.getHand();
-
-        $("#trash").click({hand: i = 0, player: j = -1},function(e){
-            var x = e.data.player;
-            var y = e.data.hand;
-            console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-            $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                var data = JSON.parse(response);
-                game.setBoard(data);
-                $("#trash").html(game.getGarbage());
-                game.getHand();    
-            });
-        });
-        for (var i = 0; i < 14; i++){
-                var EID = "#E" + i.toString();
-                var NID = "#N" + i.toString();
-                var WID = "#W" + i.toString();
-                var SID = "#S" + i.toString();
-            $(EID).click({hand: i, player: j = 0},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();   
-                });
-            });
-            $(SID).click({hand: i, player: j = 1},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();    
-                });
-            });
-            $(WID).click({hand: i, player: j = 2},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();     
-                });
-            });
-            $(NID).click({hand: i, player: j = 3},function(e){
-                var x = e.data.player;
-                var y = e.data.hand;
-                console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
-                $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
-                    var data = JSON.parse(response);
-                    game.setBoard(data);
-                    $("#state").html(game.getState());
-                    $("#trash").html(game.displayTiles(game.getGarbage()));
-                    game.getHand();    
-                });
-            });
-        }
+        $("#state").html(game.getState());    
+        game.getGameSet();
+    });
+    $("#eShang").click({player: i = 1, hand: j = -1},function(e){
+        console.log("EastShang");
+    });
+    $("#ePong").click({player: i = 1, hand: j = -2},function(e){
+        console.log("EastPong");
+    });
+    $("#eKong").click({player: i = 1, hand: j = -3},function(e){
+        console.log("EastKong");
     });
 });
+        // 
+            // $("#trash").click({hand: i = 0, player: j = -1},function(e){
+            //     var x = e.data.player;
+            //     var y = e.data.hand;
+            //     console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //     $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //         var data = JSON.parse(response);
+            //         game.setBoard(data);
+            //         $("#trash").html(game.getGarbage());
+            //         game.getHand();    
+            //     });
+            // });
+            // for (var i = 0; i < 14; i++){
+            //         var EID = "#E" + i.toString();
+            //         var NID = "#N" + i.toString();
+            //         var WID = "#W" + i.toString();
+            //         var SID = "#S" + i.toString();
+            //     $(EID).click({hand: i, player: j = 0},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();   
+            //         });
+            //     });
+            //     $(SID).click({hand: i, player: j = 1},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();    
+            //         });
+            //     });
+            //     $(WID).click({hand: i, player: j = 2},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();     
+            //         });
+            //     });
+            //     $(NID).click({hand: i, player: j = 3},function(e){
+            //         var x = e.data.player;
+            //         var y = e.data.hand;
+            //         console.log("(Player: " + x + ", Tile: " + y + ") Clicked");
+            //         $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            //             var data = JSON.parse(response);
+            //             game.setBoard(data);
+            //             $("#state").html(game.getState());
+            //             $("#trash").html(game.displayTiles(game.getGarbage()));
+            //             game.getHand();    
+            //         });
+            //     });
+            // }
+        

@@ -10,12 +10,10 @@
 
 
 /*
-This is the first attempt to make a mahjong game thru C++
-These set of objects will creates the logic of the game
+This is the first attempt to make a mahjong game in C++
+These set of objects will create the logic of the game
 
 **Tasks**
-reveal bonus tiles
-add buttons to call chow, pong, or kong
 Set up chow, kong and pong
 Set up Mahjong
 */

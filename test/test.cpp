@@ -7,28 +7,28 @@
 using namespace igloo;
 
 Context(PlayerTest){
-	Spec(CanGetNumHand){
-		Player player = Player("East");
-		Assert::That(player.getNumHand(), Equals(14));
-	}
+	// Spec(CanGetNumHand){
+	// 	Player player = Player("East");
+	// 	Assert::That(player.getNumHand(), Equals(14));
+	// }
 	Spec(CanGetTurnEast){
 		Player player = Player("East");
 		Assert::That(player.getTurn(), Equals(true));
 	}
-	Spec(CanGetTurnSouth){
-		Player player = Player("South");
-		Assert::That(player.getTurn(), Equals(false));
-	}
+	// Spec(CanGetTurnSouth){
+	// 	Player player = Player("South");
+	// 	Assert::That(player.getTurn(), Equals(false));
+	// }
 	Spec(CanSetAndGetTurnEast){
 		Player player = Player("East");
 		player.setTurn();
 		Assert::That(player.getTurn(), Equals(false));
 	}
-	Spec(CanSetandGetTurnSouth){
-		Player player = Player("South");
-		player.setTurn();
-		Assert::That(player.getTurn(), Equals(true));
-	}
+	// Spec(CanSetandGetTurnSouth){
+	// 	Player player = Player("South");
+	// 	player.setTurn();
+	// 	Assert::That(player.getTurn(), Equals(true));
+	// }
 	Spec(CanSetGetAndSortHandEast){
 		Player player = Player("East");
 		std::vector<int> hand = {1,5,8,3,2};
@@ -59,14 +59,6 @@ Context(PlayerTest){
 };
 
 Context(MahjongTilesTest){
-	Spec(CanGetTiles){
-		MahjongTiles tiles = MahjongTiles(144);
-		std::vector<int> vect;
-		for(int i = 0; i < 144; i++){
-            vect.push_back(i+1);
-        }
-		Assert::That(tiles.getTiles(), Equals(vect));
-	}
 	// Spec(CanGetTile){
 	// 	MahjongTiles tiles = MahjongTiles(144);
 	// 	int n = 99;
@@ -93,6 +85,10 @@ Context(MahjongTilesTest){
 	// 	tiles.rmTile(123 - 1);
 	// 	Assert::That(tiles.getTiles(), Equals(vect));
 	// }
+};
+
+Context(MahjongBoardGame){
+=
 };
 
 int main() {
