@@ -24,11 +24,11 @@ img{
     max-height: 100%;
 }
 
-.stack{
+/* .stack{
     -webkit-columns: 3;
     -moz-columns: 3;
     columns: 3;
-}
+} */
 
 .tile {
     width: 75px;
