@@ -202,6 +202,14 @@ $(document).ready(function(){
     });
     $("#eShang").click({player: i = 1, hand: j = -1},function(e){
         console.log("EastShang");
+        var x = e.data.player;
+        var y = e.data.hand;
+        $.get("/handle", {"x": x, "y": y, "btn": "left"}, function(response){
+            var data = JSON.parse(response);
+            game.setBoard(data);
+            $("#state").html(game.getState());    
+            game.getGameSet();  
+        });
     });
     $("#ePong").click({player: i = 1, hand: j = -2},function(e){
         console.log("EastPong");
