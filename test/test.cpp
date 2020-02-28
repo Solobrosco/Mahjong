@@ -88,7 +88,6 @@ Context(MahjongTilesTest){
 };
 
 Context(MahjongBoardGame){
-=
 };
 
 int main() {
