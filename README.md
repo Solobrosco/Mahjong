@@ -8,25 +8,25 @@ This is a repository for the Chinese tile-based game played through a progressiv
 1. Clone repository using **HTTPS**
 	```sh
 
-	$ git clone https://github.com/Solobrosco/Mahjong.git
+	git clone https://github.com/Solobrosco/Mahjong.git
 
 	```
 2. Navigate to the Mahjong folder
 	```sh
 
-	$ cd Mahjong
+	cd Mahjong
 
 	```
 3.  Type make
 	 ```sh
 
-	$ cd make
+	make
 
 	```
 4. Run locally on PORT 18080
  	 ```sh
 
-	$ ./bin/server -t templates/ -s static/ 
+	./bin/server -t templates/ -s static/ 
 
 	```
 5.  Open [http://localhost:18080](http://localhost:18080/) to view the app.
