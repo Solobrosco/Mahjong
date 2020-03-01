@@ -7,13 +7,24 @@
 using namespace igloo;
 
 Context(PlayerTest){
-	// Spec(CanGetNumHand){
-	// 	Player player = Player("East");
-	// 	Assert::That(player.getNumHand(), Equals(14));
-	// }
-	Spec(CanGetTurnEast){
-		Player player = Player("East");
-		Assert::That(player.getTurn(), Equals(true));
+	Spec(ResettingPlayer){
+		Player playerE = Player("East");
+		Player playerS = Player("South");
+		playerE.resetPlayer();
+		playerS.resetPlayer();
+		Assert::That(playerE.getNumHand(), Equals(0));
+		Assert::That(playerS.getNumHand(), Equals(0));
+		Assert::That(playerE.getTurn(), Equals(true));
+		Assert::That(playerS.getTurn(), Equals(false));
+	}
+	Spec(GettingTurn){
+		Player playerE = Player("East");
+		Player playerS = Player("South");
+		Assert::That(playerE.getTurn(), Equals(true));
+		Assert::That(playerS.getTurn(), Equals(false));
+	}
+	Spec(SorttingHand){
+		Player playerE = Player("East");		
 	}
 	// Spec(CanGetTurnSouth){
 	// 	Player player = Player("South");
