@@ -33,6 +33,19 @@ Context(PlayerTest){
 		std::vector<int> sorted = {1,2,3,4,7};
 		Assert::That(playerE.getHand(), Equals(sorted));
 	}
+	Spec(ThrowingTile){
+		Player playerE = Player("East");
+		playerE.setHand(3);
+		playerE.setHand(1);
+		playerE.setHand(7);
+		playerE.setHand(2);
+		playerE.setHand(4);
+		playerE.sortHand();
+		playerE.throwTile(0);
+		std::vector<int> hS = playerE.getHand();
+		std::vector<int> n = {2,3,4,7};
+		Assert::That(hS, Equals(n));
+	}
 	// Spec(CanGetTurnSouth){
 	// 	Player player = Player("South");
 	// 	Assert::That(player.getTurn(), Equals(false));
