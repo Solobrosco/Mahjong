@@ -7,6 +7,23 @@
 using namespace igloo;
 
 Context(PlayerTest){
+	Spec(CanGetPlayer){
+		std::string East = "East";
+		std::string South = "South";
+		std::string West = "West";
+		std::string North = "North";
+		std::string Random = "Gibby";
+		Player playerE = Player(East);
+		Player playerS = Player(South);
+		Player playerW = Player(West);
+		Player playerN = Player(North);
+		Player playerR = Player(Random);
+		Assert::That(playerE.getPlayer(), Equals(East));
+		Assert::That(playerS.getPlayer(), Equals(South));
+		Assert::That(playerW.getPlayer(), Equals(West));
+		Assert::That(playerN.getPlayer(), Equals(North));
+		Assert::That(playerR.getPlayer(), Equals(Random));
+	}
 	Spec(CanResetPlayer){
 		Player playerE = Player("East");
 		Player playerS = Player("South");
