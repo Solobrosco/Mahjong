@@ -23,7 +23,15 @@ Context(PlayerTest){
 		Assert::That(playerE.getTurn(), Equals(true));
 		Assert::That(playerS.getTurn(), Equals(false));
 	}
-	Spec(CanGetHandSortted){
+	Spec(CanSetAndGetPlayerTurn){
+		Player playerE = Player("East");
+		Player playerS = Player("South");
+		playerE.setTurn();
+		playerS.setTurn();
+		Assert::That(playerE.getTurn(), Equals(false));
+		Assert::That(playerS.getTurn(), Equals(true));
+	}
+	Spec(CanSetAndGetPlayerHandSortted){
 		Player playerE = Player("East");
 		std::vector<int> hand = {1,5,8,3,2};
 		std::vector<int> sorted = {1,2,3,5,8};
@@ -32,28 +40,14 @@ Context(PlayerTest){
 		}
 		Assert::That(playerE.getHand(), Equals(sorted));
 	}
-	Spec(CanSetAndGetTurnEast){
-		Player player = Player("East");
-		player.setTurn();
-		Assert::That(player.getTurn(), Equals(false));
-	}
-	Spec(CanSetGetAndSortHandEast){
-		Player player = Player("East");
-		std::vector<int> hand = {1,5,8,3,2};
-		std::vector<int> sorted = {1,2,3,5,8};
-		for(int i = 0; i < hand.size(); i++){
-			player.setHand(hand[i]);
+	Spec(CanSetAndGetRevealEast){
+		Player playerE = Player("East");
+		std::vector<int> reveal = {137,138,140,141,139};
+		for(int i = 0; i < reveal.size(); i++){
+			playerE.setReveal(reveal[i]);
 		}
-		Assert::That(player.getHand(), Equals(sorted));
+		Assert::That(playerE.getReveal(), Equals(reveal));	
 	}
-	// Spec(CanSetAndGetRevealEast){
-	// 	Player player = Player("East");
-	// 	std::vector<int> reveal = {137,138,140,141,139};
-	// 	for(int i = 0; i < reveal.size(); i++){
-	// 		player.setReveal(reveal[i]);
-	// 	}
-	// 	Assert::That(player.getReveal(), Equals(reveal));	
-	// }
 	Spec(CanThrowTile){
 		Player player = Player("East");
 		std::vector<int> hand = {1,2,3,5,8};
