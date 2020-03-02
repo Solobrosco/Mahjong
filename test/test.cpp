@@ -7,7 +7,7 @@
 using namespace igloo;
 
 Context(PlayerTest){
-	Spec(ResettingPlayer){
+	Spec(CanResetPlayer){
 		Player playerE = Player("East");
 		Player playerS = Player("South");
 		playerE.resetPlayer();
@@ -17,20 +17,19 @@ Context(PlayerTest){
 		Assert::That(playerE.getTurn(), Equals(true));
 		Assert::That(playerS.getTurn(), Equals(false));
 	}
-	Spec(GettingTurn){
+	Spec(CanGetPlayerTurn){
 		Player playerE = Player("East");
 		Player playerS = Player("South");
 		Assert::That(playerE.getTurn(), Equals(true));
 		Assert::That(playerS.getTurn(), Equals(false));
 	}
-	Spec(GettingHandSortted){
+	Spec(CanGetHandSortted){
 		Player playerE = Player("East");
-		playerE.setHand(3);
-		playerE.setHand(1);
-		playerE.setHand(7);
-		playerE.setHand(2);
-		playerE.setHand(4);
-		std::vector<int> sorted = {1,2,3,4,7};
+		std::vector<int> hand = {1,5,8,3,2};
+		std::vector<int> sorted = {1,2,3,5,8};
+		for(int i = 0; i < hand.size(); i++){
+			playerE.setHand(hand[i]);
+		}
 		Assert::That(playerE.getHand(), Equals(sorted));
 	}
 	Spec(CanSetAndGetTurnEast){
