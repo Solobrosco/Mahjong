@@ -16,14 +16,19 @@ Context(PlayerTest){
 		}
 	}
 	Spec(CanResetPlayer){
-		Player playerE = Player("East");
-		Player playerS = Player("South");
-		playerE.resetPlayer();
-		playerS.resetPlayer();
-		Assert::That(playerE.getNumHand(), Equals(0));
-		Assert::That(playerS.getNumHand(), Equals(0));
-		Assert::That(playerE.getTurn(), Equals(true));
-		Assert::That(playerS.getTurn(), Equals(false));
+		std::vector<std::string> names = {"East","South","West","North","Gibby"};
+		std::vector<Player> Players;
+		for(int i = 0; i < names.size(); i++){
+			Players.push_back(Player(names[i]));
+			Players[i].resetPlayer();
+			if(i == 0){
+				Assert::That(Players[i].getNumHand(), Equals(0));
+				Assert::That(Players[i].getTurn(), Equals(true));
+			}else{
+				Assert::That(Players[i].getNumHand(), Equals(0));
+				Assert::That(Players[i].getTurn(), Equals(false));
+			}
+		}
 	}
 	Spec(CanGetPlayerTurn){
 		Player playerE = Player("East");
