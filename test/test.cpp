@@ -21,7 +21,7 @@ Context(PlayerTest){
 		for(int i = 0; i < names.size(); i++){
 			Players.push_back(Player(names[i]));
 			Players[i].resetPlayer();
-			if(i == 0){
+			if(names[i] == "East"){
 				Assert::That(Players[i].getNumHand(), Equals(0));
 				Assert::That(Players[i].getTurn(), Equals(true));
 			}else{
@@ -30,19 +30,18 @@ Context(PlayerTest){
 			}
 		}
 	}
-	Spec(CanGetPlayerTurn){
-		Player playerE = Player("East");
-		Player playerS = Player("South");
-		Assert::That(playerE.getTurn(), Equals(true));
-		Assert::That(playerS.getTurn(), Equals(false));
-	}
-	Spec(CanSetAndGetPlayerTurn){
-		Player playerE = Player("East");
-		Player playerS = Player("South");
-		playerE.setTurn();
-		playerS.setTurn();
-		Assert::That(playerE.getTurn(), Equals(false));
-		Assert::That(playerS.getTurn(), Equals(true));
+	Spec(CanGetAndSetPlayerTurn){
+		std::vector<std::string> names = {"East","South","West","North","Gibby"};
+		std::vector<Player> Players;
+		for(int i = 0; i < names.size(); i++){
+			Players.push_back(Player(names[i]));
+			Players[i].setTurn();
+			if(names[i] == "East"){
+				Assert::That(Players[i].getTurn(), Equals(false));
+			}else{
+				Assert::That(Players[i].getTurn(), Equals(true));
+			}
+		}
 	}
 	Spec(CanSetAndGetPlayerHandSortted){
 		Player playerE = Player("East");
