@@ -73,6 +73,12 @@ Context(PlayerTest){
 };
 
 Context(MahjongTilesTest){
+	Spec(CanConstructTiles){
+		MahjongTiles tiles = MahjongTiles(144);
+		tiles.resetTiles();
+		std::vector<int> T = tiles.getTiles();
+		Assert::That(T.size(),Equals(144));
+	}
 	// Spec(CanGetTile){
 	// 	MahjongTiles tiles = MahjongTiles(144);
 	// 	int n = 99;
