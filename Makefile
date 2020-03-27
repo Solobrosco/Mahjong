@@ -30,6 +30,8 @@ TEST = test
 # Specify name of scratchpad executable
 SCRATCH = scratch
 
+# Server Flags
+run = -t templates/ -s static/
 #==============================================================================================
 
 # Do not edit below this line (unless you want to)
@@ -43,7 +45,6 @@ NEEDED_FILES := $(filter-out $(SDIR)/app.cpp, $(SRC_FILES))
 TESTOBJ = $(TDIR)/$(ODIR)/test.o $(patsubst $(SDIR)/%.cpp,$(ODIR)/%.o,$(NEEDED_FILES))
 
 SCRATCHOBJ = $(PDIR)/$(ODIR)/scratchpad.o $(patsubst $(SDIR)/%.cpp,$(ODIR)/%.o,$(NEEDED_FILES))
-
 
 $(PDIR)/$(ODIR)/%.o: $(PDIR)/%.cpp $(H_FILES)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -62,6 +63,9 @@ $(TEST): $(TESTOBJ)
 
 $(SCRATCH): $(SCRATCHOBJ)
 	$(CC) $^ -o $(BDIR)/$@ $(CFLAGS)
+
+run: $(PROGRAM)
+	./$(BDIR)/$^ $(run)
 
 clean:
 	$(RM) $(BDIR)/*
